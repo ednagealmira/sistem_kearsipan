@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//cuma mau nambah ajah
 
 class Admin extends CI_Controller
 {

@@ -6,11 +6,8 @@
 
                     <div class="row">
                         <div class="col-lg-8">
-                            <?= form_open_multipart('adminpusat/uploadtemplate');?>
-                            <div class="form-group row">
-                                <div class="col-sm-3">Upload Template</div>
-                            </div>
-                            </form>
+                            <?= $this->session->flashdata('message'); ?>
+                            <a href="<?= base_url('adminpusat/templatedoc_upload'); ?>" class="btn btn-primary mb-3">Upload Template</a> 
                         </div>
                     </div>
 

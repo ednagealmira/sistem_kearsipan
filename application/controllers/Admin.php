@@ -54,7 +54,8 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
     
-    public function changeaccess() {
+    public function changeaccess()
+    {
         $role_id = $this->input->post('roleId');
         $menu_id = $this->input->post('menuId');
         $data = [
@@ -65,7 +66,8 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akses berhasil diubah.</div>');
     }
     
-    public function usermanagement() {
+    public function usermanagement()
+    {
         $data['title'] = 'Pengaturan Pengguna';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
@@ -114,13 +116,15 @@ class Admin extends CI_Controller
         }        
     }
     
-    public function userdelete($user_id) {
+    public function userdelete($user_id)
+    {
         $this->Admin_model->deleteUser($user_id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pengguna berhasil dihapus.</div>');
         redirect('admin/usermanagement');
     }
 
-    public function useradd() {
+    public function useradd()
+    {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Nama harus diisi.'
         ]);

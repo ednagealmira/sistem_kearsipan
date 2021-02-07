@@ -30,6 +30,7 @@ class Adminpusat extends CI_Controller
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['templates'] = $this->Adminpusat_model->getListTemplate();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -41,9 +42,6 @@ class Adminpusat extends CI_Controller
     {
         $this->form_validation->set_rules('template_desc', 'Keterangan', 'required|trim', [
             'required' => 'Keterangan template harus diisi.'
-        ]);
-        $this->form_validation->set_rules('file_template', 'Dokumen', 'required', [
-            'required' => 'Silahkan pilih file template.'
         ]);
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Upload Template Dokumen';
@@ -57,7 +55,8 @@ class Adminpusat extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             if ($_FILES['file_template']['name']) {
-                $config['upload_path'] = './assets/filesUploaded/templatedoc';
+
+                $config['upload_path'] = './assets/filesUploaded/templatedoc/';
                 $config['allowed_types'] = 'doc|docx|pdf';
                 $config['max_size']     = '2048';
 
@@ -66,7 +65,9 @@ class Adminpusat extends CI_Controller
                 if ($this->upload->do_upload('file_template')) {
                     $file_name = $this->upload->data('file_name');
                 } else {
-                    echo $this->upload->display_errors();
+                    // $error = array('error' => $this->upload->display_errors());
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">'. $this->upload->display_errors() .'</div>');
+                    redirect('adminpusat/templatedoc');
                 }
             }
 
@@ -81,5 +82,25 @@ class Adminpusat extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil ditambahkan!</div>');
             redirect('adminpusat/templatedoc');
         }
+    }
+
+    public function templatedelete($template_id)
+    {
+        $this->Adminpusat_model->deleteTemplate($template_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil dihapus.</div>');
+        redirect('adminpusat/templatedoc');
+    }
+
+    public function templateedit($template_id)
+    {
+        $data['title'] = 'Edit Template Dokumen';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/templatedoc_edit', $data);
+        $this->load->view('templates/footer');
     }
 }

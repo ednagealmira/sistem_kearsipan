@@ -18,4 +18,22 @@ class Adminpusat_model extends CI_Model
         $this->db->where('id', $template_id);
         $this->db->delete('doc_template');
     }
+
+    public function getTemplateById($template_id)
+    {
+        $this->db->where('id', $template_id);
+        return $this->db->get('doc_template')->row_array();
+    }
+
+    public function addTemplate($data)
+    {
+        $this->db->insert('doc_template', $data);
+    }
+
+    public function editTemplate($template_id, $template_desc)
+    {
+        $this->db->set('template_desc', $template_desc);
+        $this->db->where('id', $template_id);
+        $this->db->update('doc_template');
+    }
 }

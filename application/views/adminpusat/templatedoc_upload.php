@@ -6,6 +6,7 @@
 
                     <div class="row">
                         <div class="col-lg-8">
+                        <?= $this->session->flashdata('message'); ?>
                         <?= form_open_multipart('adminpusat/templatedoc_upload'); ?>
                             <div class="form-group row">
                                 <label for="template_desc" class="col-sm-2 col-form-label">Keterangan</label>

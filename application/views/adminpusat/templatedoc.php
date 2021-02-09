@@ -32,11 +32,14 @@
                                             <td><?= $t['template_desc']; ?></td>
                                             <td><?= date('d-m-Y', $t['upload_date']); ?></td>
                                             <td>
-                                                <a href="<?= base_url('adminpusat/templateedit/') . $t['id']; ?>" class="btn btn-success btn-circle btn-sm mr-1 btn-edit">
+                                                <a href="<?= base_url('adminpusat/templateedit/') . $t['id']; ?>" class="btn btn-success btn-circle btn-sm mr-1">
                                                     <i class="fas fa-fw fa-pen"></i>
                                                 </a>
-                                                <a href="<?= base_url('adminpusat/templatedelete/') . $t['id']; ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Anda yakin ingin menghapus template <?= $t['template_desc']; ?> ?')">
+                                                <a href="<?= base_url('adminpusat/templatedelete/') . $t['id']; ?>" class="btn btn-danger btn-circle btn-sm mr-1" onclick="return confirm('Anda yakin ingin menghapus template <?= $t['template_desc']; ?> ?')">
                                                     <i class="fas fa-fw fa-trash"></i>
+                                                </a>
+                                                <a href="<?= base_url('adminpusat/templatedownload/') . $t['id']; ?>" class="btn btn-warning btn-circle btn-sm">
+                                                    <i class="fas fa-fw fa-file-download"></i></i>
                                                 </a>
                                             </td>
                                         </tr>

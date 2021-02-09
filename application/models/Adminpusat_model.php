@@ -36,4 +36,11 @@ class Adminpusat_model extends CI_Model
         $this->db->where('id', $template_id);
         $this->db->update('doc_template');
     }
+
+    public function getFileName($template_id)
+    {
+        $this->db->where('id', $template_id);
+        $template = $this->db->get('doc_template')->row_array();
+        return $template['file_name'];
+    }
 }

@@ -117,7 +117,20 @@ class Adminpusat extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil diperbarui!</div>');
             redirect('adminpusat/templatedoc');
         }
+    }
 
+    public function templatedownload($template_id)
+    {
+        $file_name = $this->Adminpusat_model->getFileName($template_id);
+        $file_path = './assets/filesUploaded/templatedoc/'.$file_name;
+
+        $this->load->helper('download');
         
+        if (force_download($file_path, NULL)) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil diunduh!</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Template gagal diunduh.</div>');
+        }
+        redirect('adminpusat/templatedoc');
     }
 }

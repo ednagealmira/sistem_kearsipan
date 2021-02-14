@@ -12,9 +12,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="jnaskah" id="jnaskah">
                                             <option value="" selected hidden>Pilih Jenis Naskah</option>
-                                            <!-- <?php foreach($jnaskah as $jn) : ?>
-                                            <option value="<?= $jn['id']; ?>"><?= $jn['jnaskah']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php foreach($jnaskah as $jn) : ?>
+                                            <option value="<?= $jn['id']; ?>"><?= $jn['jenis']; ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('jnaskah', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -24,9 +24,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="tperkembangan" id="tperkembangan">
                                             <option value="" selected hidden>Pilih Tingkat Perkembangan</option>
-                                            <!-- <?php foreach($tperkembangan as $tp) : ?>
+                                            <?php foreach($tperkembangan as $tp) : ?>
                                             <option value="<?= $tp['id']; ?>"><?= $tp['tperkembangan']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('tperkembangan', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -64,9 +64,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="turgensi" id="turgensi">
                                             <option value="" selected hidden>Pilih Tingkat Urgensi</option>
-                                            <!-- <?php foreach($turgensi as $tu) : ?>
-                                            <option value="<?= $tu['id']; ?>"><?= $tu['turgensi']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php foreach($turgensi as $tu) : ?>
+                                            <option value="<?= $tu['id']; ?>"><?= $tu['urgensi']; ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('turgensi', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -76,9 +76,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="sifatnaskah" id="sifatnaskah">
                                             <option value="" selected hidden>Pilih Sifat Naskah</option>
-                                            <!-- <?php foreach($sifatnaskah as $sn) : ?>
-                                            <option value="<?= $sn['id']; ?>"><?= $sn['sifatnaskah']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php foreach($sifatnaskah as $sn) : ?>
+                                            <option value="<?= $sn['id']; ?>"><?= $sn['sifat']; ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('sifatnaskah', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -88,9 +88,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="kategoriarsip" id="kategoriarsip">
                                             <option value="" selected hidden>Pilih Kategori Arsip</option>
-                                            <!-- <?php foreach($kategoriarsip as $ka) : ?>
+                                            <?php foreach($kategoriarsip as $ka) : ?>
                                             <option value="<?= $ka['id']; ?>"><?= $ka['kategoriarsip']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('kategoriarsip', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -100,9 +100,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="taksespublik" id="taksespublik">
                                             <option value="" selected hidden>Pilih Tingkat Akses Publik</option>
-                                            <!-- <?php foreach($taksespublik as $tap) : ?>
+                                            <?php foreach($taksespublik as $tap) : ?>
                                             <option value="<?= $tap['id']; ?>"><?= $tap['taksespublik']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('taksespublik', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -156,9 +156,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="mediaarsip" id="mediaarsip">
                                             <option value="" selected hidden>Pilih Media Arsip</option>
-                                            <!-- <?php foreach($mediaarsip as $sn) : ?>
-                                            <option value="<?= $sn['id']; ?>"><?= $sn['mediaarsip']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php foreach($mediaarsip as $sn) : ?>
+                                            <option value="<?= $sn['id']; ?>"><?= $sn['media_arsip']; ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('mediaarsip', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -168,9 +168,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="bahasa" id="bahasa">
                                             <option value="" selected hidden>Pilih Bahasa</option>
-                                            <!-- <?php foreach($bahasa as $sn) : ?>
+                                            <?php foreach($bahasa as $sn) : ?>
                                             <option value="<?= $sn['id']; ?>"><?= $sn['bahasa']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('bahasa', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
@@ -195,9 +195,9 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="statusvital" id="statusvital">
                                             <option value="" selected hidden>Pilih Status Vital Arsip</option>
-                                            <!-- <?php foreach($statusvital as $sn) : ?>
+                                            <?php foreach($statusvital as $sn) : ?>
                                             <option value="<?= $sn['id']; ?>"><?= $sn['statusvital']; ?></option>
-                                            <?php endforeach; ?> -->
+                                            <?php endforeach; ?>
                                         </select>
                                         <?= form_error('bahasa', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>

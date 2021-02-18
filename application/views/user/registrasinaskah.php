@@ -107,19 +107,19 @@
                                         <?= form_error('taksespublik', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <label for="refbalasan" class="col-sm-3 col-form-label">Referensi Balasan</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="refbalasan" name="refbalasan" value="<?= set_value('refbalasan'); ?>">
                                         <?= form_error('refbalasan', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group row justify-content-center">Pengirim</div>
                                 <div class="form-group row">
-                                    <label for="instansi" class="col-sm-3 col-form-label">Instansi</label>
+                                    <label for="instansipengirim" class="col-sm-3 col-form-label">Instansi</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="instansi" name="instansi" value="<?= set_value('instansi'); ?>">
-                                        <?= form_error('instansi', '<small class="text-danger pl-3">', '</small>') ; ?>
+                                        <input type="text" class="form-control" id="instansipengirim" name="instansipengirim" value="<?= set_value('instansipengirim'); ?>">
+                                        <?= form_error('instansipengirim', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -138,10 +138,10 @@
                                 </div>
                                 <div class="form-group row justify-content-center">Penerima</div>
                                 <div class="form-group row">
-                                    <label for="instansi" class="col-sm-3 col-form-label">Kepada</label>
+                                    <label for="penerima" class="col-sm-3 col-form-label">Kepada</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="instansi" name="instansi" value="<?= set_value('instansi'); ?>">
-                                        <?= form_error('instansi', '<small class="text-danger pl-3">', '</small>') ; ?>
+                                        <input type="text" class="form-control" id="penerima" name="penerima" value="<?= set_value('penerima'); ?>">
+                                        <?= form_error('penerima', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -178,8 +178,7 @@
                                 <div class="form-group row">
                                     <label for="isiringkas" class="col-sm-3 col-form-label">Isi Ringkas</label>
                                     <div class="col-sm-9">
-                                        <textarea type="text" class="form-control" id="isiringkas" name="isiringkas" value="<?= set_value('isiringkas'); ?>">
-                                        </textarea>
+                                        <textarea type="text" class="form-control" id="isiringkas" name="isiringkas" value="<?= set_value('isiringkas'); ?>"></textarea>
                                         <?= form_error('isiringkas', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
@@ -191,7 +190,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="arsipvital" class="col-sm-3 col-form-label">Status Vital Arsip</label>
+                                    <label for="statusvital" class="col-sm-3 col-form-label">Status Vital Arsip</label>
                                     <div class="col-sm-9">
                                         <select class="form-control" name="statusvital" id="statusvital">
                                             <option value="" selected hidden>Pilih Status Vital Arsip</option>
@@ -199,14 +198,23 @@
                                             <option value="<?= $sn['id']; ?>"><?= $sn['statusvital']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
-                                        <?= form_error('bahasa', '<small class="text-danger pl-3">', '</small>') ; ?>
+                                        <?= form_error('statusvital', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-4">
                                         <input type="text" class="form-control" id="jumlah" name="jumlah" value="<?= set_value('jumlah'); ?>">
                                         <?= form_error('jumlah', '<small class="text-danger pl-3">', '</small>') ; ?>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <select class="form-control" name="satuanjumlah" id="satuanjumlah">
+                                            <option value="" selected hidden>Pilih Satuan Jumlah</option>
+                                            <?php foreach($satuanjumlah as $sj) : ?>
+                                            <option value="<?= $sj['id']; ?>"><?= $sj['satuanjumlah']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <?= form_error('satuanjumlah', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-end">

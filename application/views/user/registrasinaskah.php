@@ -13,6 +13,9 @@
                                         <select class="form-control" name="jnaskah" id="jnaskah">
                                             <option value="" selected hidden>Pilih Jenis Naskah</option>
                                             <?php foreach($jnaskah as $jn) : ?>
+                                            <?php if($jn['id'] == set_value('jnaskah')) : ?>
+                                            <option value="<?= $jn['id']; ?>" selected hidden><?= $jn['jenis']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $jn['id']; ?>"><?= $jn['jenis']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -25,6 +28,9 @@
                                         <select class="form-control" name="tperkembangan" id="tperkembangan">
                                             <option value="" selected hidden>Pilih Tingkat Perkembangan</option>
                                             <?php foreach($tperkembangan as $tp) : ?>
+                                            <?php if($tp['id'] == set_value('tperkembangan')) : ?>
+                                            <option value="<?= $tp['id']; ?>" selected hidden><?= $tp['tperkembangan']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $tp['id']; ?>"><?= $tp['tperkembangan']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -65,6 +71,9 @@
                                         <select class="form-control" name="turgensi" id="turgensi">
                                             <option value="" selected hidden>Pilih Tingkat Urgensi</option>
                                             <?php foreach($turgensi as $tu) : ?>
+                                            <?php if($tu['id'] == set_value('turgensi')) : ?>
+                                            <option value="<?= $tu['id']; ?>" selected hidden><?= $tu['urgensi']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $tu['id']; ?>"><?= $tu['urgensi']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -77,6 +86,9 @@
                                         <select class="form-control" name="sifatnaskah" id="sifatnaskah">
                                             <option value="" selected hidden>Pilih Sifat Naskah</option>
                                             <?php foreach($sifatnaskah as $sn) : ?>
+                                            <?php if($sn['id'] == set_value('sifatnaskah')) : ?>
+                                            <option value="<?= $sn['id']; ?>" selected hidden><?= $sn['sifat']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $sn['id']; ?>"><?= $sn['sifat']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -89,6 +101,9 @@
                                         <select class="form-control" name="kategoriarsip" id="kategoriarsip">
                                             <option value="" selected hidden>Pilih Kategori Arsip</option>
                                             <?php foreach($kategoriarsip as $ka) : ?>
+                                            <?php if($ka['id'] == set_value('kategoriarsip')) : ?>
+                                            <option value="<?= $ka['id']; ?>" selected hidden><?= $ka['kategoriarsip']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $ka['id']; ?>"><?= $ka['kategoriarsip']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -101,6 +116,9 @@
                                         <select class="form-control" name="taksespublik" id="taksespublik">
                                             <option value="" selected hidden>Pilih Tingkat Akses Publik</option>
                                             <?php foreach($taksespublik as $tap) : ?>
+                                            <?php if($tap['id'] == set_value('taksespublik')) : ?>
+                                            <option value="<?= $tap['id']; ?>" selected hidden><?= $tap['taksespublik']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $tap['id']; ?>"><?= $tap['taksespublik']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -156,8 +174,11 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="mediaarsip" id="mediaarsip">
                                             <option value="" selected hidden>Pilih Media Arsip</option>
-                                            <?php foreach($mediaarsip as $sn) : ?>
-                                            <option value="<?= $sn['id']; ?>"><?= $sn['media_arsip']; ?></option>
+                                            <?php foreach($mediaarsip as $ma) : ?>
+                                            <?php if($ma['id'] == set_value('mediaarsip')) : ?>
+                                            <option value="<?= $ma['id']; ?>" selected hidden><?= $ma['media_arsip']; ?></option>
+                                            <?php endif; ?>
+                                            <option value="<?= $ma['id']; ?>"><?= $ma['media_arsip']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <?= form_error('mediaarsip', '<small class="text-danger pl-3">', '</small>') ; ?>
@@ -168,8 +189,11 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="bahasa" id="bahasa">
                                             <option value="" selected hidden>Pilih Bahasa</option>
-                                            <?php foreach($bahasa as $sn) : ?>
-                                            <option value="<?= $sn['id']; ?>"><?= $sn['bahasa']; ?></option>
+                                            <?php foreach($bahasa as $b) : ?>
+                                            <?php if($b['id'] == set_value('bahasa')) : ?>
+                                            <option value="<?= $b['id']; ?>" selected hidden><?= $b['bahasa']; ?></option>
+                                            <?php endif; ?>
+                                            <option value="<?= $b['id']; ?>"><?= $b['bahasa']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <?= form_error('bahasa', '<small class="text-danger pl-3">', '</small>') ; ?>
@@ -194,8 +218,11 @@
                                     <div class="col-sm-9">
                                         <select class="form-control" name="statusvital" id="statusvital">
                                             <option value="" selected hidden>Pilih Status Vital Arsip</option>
-                                            <?php foreach($statusvital as $sn) : ?>
-                                            <option value="<?= $sn['id']; ?>"><?= $sn['statusvital']; ?></option>
+                                            <?php foreach($statusvital as $sv) : ?>
+                                            <?php if($sv['id'] == set_value('statusvital')) : ?>
+                                            <option value="<?= $sv['id']; ?>" selected hidden><?= $sv['statusvital']; ?></option>
+                                            <?php endif; ?>
+                                            <option value="<?= $sv['id']; ?>"><?= $sv['statusvital']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <?= form_error('statusvital', '<small class="text-danger pl-3">', '</small>') ; ?>
@@ -211,6 +238,9 @@
                                         <select class="form-control" name="satuanjumlah" id="satuanjumlah">
                                             <option value="" selected hidden>Pilih Satuan Jumlah</option>
                                             <?php foreach($satuanjumlah as $sj) : ?>
+                                            <?php if($sj['id'] == set_value('satuanjumlah')) : ?>
+                                            <option value="<?= $sj['id']; ?>" selected hidden><?= $sj['satuanjumlah']; ?></option>
+                                            <?php endif; ?>
                                             <option value="<?= $sj['id']; ?>"><?= $sj['satuanjumlah']; ?></option>
                                             <?php endforeach; ?>
                                         </select>

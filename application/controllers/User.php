@@ -73,7 +73,7 @@ class User extends CI_Controller
             $this->load->view('user/registrasinaskah', $data);
             $this->load->view('templates/footer');
         } else {
-
+            var_dump($this->input->post('turgensi'));
         }
     }
 

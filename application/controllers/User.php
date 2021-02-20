@@ -114,7 +114,7 @@ class User extends CI_Controller
 
     public function downloadTemplate()
     {
-        $data['title'] = 'Download Template Dokumen';
+        $data['title'] = 'Download Template';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->User_model->userLogged();

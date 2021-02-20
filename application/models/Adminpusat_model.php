@@ -15,8 +15,17 @@ class Adminpusat_model extends CI_Model
 
     public function deleteTemplate($template_id)
     {
-        $this->db->where('id', $template_id);
-        $this->db->delete('doc_template');
+        //delete local file template
+        $temp = $this->db->get_where('doc_template', array('id'=> $template_id))->row_array();
+        $file_path = './assets/filesUploaded/templatedoc/' . $temp['file_name'];
+        if (!unlink($file_path)) {
+            return 0;
+        }
+        else {
+            $this->db->where('id', $template_id);
+            $this->db->delete('doc_template');
+            return 1;
+        }
     }
 
     public function getTemplateById($template_id)

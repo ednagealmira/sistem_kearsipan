@@ -89,8 +89,13 @@ class Adminpusat extends CI_Controller
 
     public function templatedelete($template_id)
     {
-        $this->Adminpusat_model->deleteTemplate($template_id);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil dihapus.</div>');
+        $res = $this->Adminpusat_model->deleteTemplate($template_id);
+        if ($res == 0) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">"File template gagal dihapus."</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil dihapus.</div>');
+        }
+        
         redirect('adminpusat/templatedoc');
     }
 

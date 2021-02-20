@@ -41,7 +41,7 @@
                                 <div class="form-group row">
                                     <label for="tglnaskah" class="col-sm-3 col-form-label">Tanggal Naskah</label>
                                     <div class="col-sm-9">
-                                        <input type="date" class="form-control" id="tglnaskah" name="tglnaskah">
+                                        <input type="date" class="form-control" id="tglnaskah" name="tglnaskah" value="<?= set_value('tglnaskah'); ?>">
                                         <?= form_error('tglnaskah', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@
                                 <div class="form-group row">
                                     <label for="isiringkas" class="col-sm-3 col-form-label">Isi Ringkas</label>
                                     <div class="col-sm-9">
-                                        <textarea type="text" class="form-control" id="isiringkas" name="isiringkas" value="<?= set_value('isiringkas'); ?>"><?= set_value('isiringkas'); ?></textarea>
+                                        <textarea type="text" class="form-control" id="isiringkas" name="isiringkas"><?= set_value('isiringkas'); ?></textarea>
                                         <?= form_error('isiringkas', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>

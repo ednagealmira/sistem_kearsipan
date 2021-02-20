@@ -56,16 +56,16 @@ class User extends CI_Controller
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
             $data['user'] = $this->User_model->userLogged();
     
-            $data['jnaskah'] = $this->db->get('naskah_jenis')->result_array();
-            $data['tperkembangan'] = $this->db->get('naskah_tperkembangan')->result_array();
-            $data['turgensi'] = $this->db->get('naskah_urgensi')->result_array();
-            $data['sifatnaskah'] = $this->db->get('naskah_sifat')->result_array();
-            $data['kategoriarsip'] = $this->db->get('naskah_kategori')->result_array();
-            $data['taksespublik'] = $this->db->get('naskah_taksespublik')->result_array();
-            $data['mediaarsip'] = $this->db->get('naskah_media')->result_array();
-            $data['bahasa'] = $this->db->get('naskah_bahasa')->result_array();
-            $data['statusvital'] = $this->db->get('naskah_statusvital')->result_array();
-            $data['satuanjumlah'] = $this->db->get('naskah_satuanjumlah')->result_array();
+            $data['jnaskah'] = $this->User_model->getJNaskah();
+            $data['tperkembangan'] = $this->User_model->getTPerkembangan();
+            $data['turgensi'] = $this->User_model->getTUrgensi();
+            $data['sifatnaskah'] = $this->User_model->getSifat();
+            $data['kategoriarsip'] = $this->User_model->getKArsip();
+            $data['taksespublik'] = $this->User_model->getTAPublik();
+            $data['mediaarsip'] = $this->User_model->getMedia();
+            $data['bahasa'] = $this->User_model->getBahasa();
+            $data['statusvital'] = $this->User_model->getStatusVital();
+            $data['satuanjumlah'] = $this->User_model->getSatuanJumlah();
             
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -136,7 +136,7 @@ class User extends CI_Controller
     
     public function logNaskah()
     {
-        $data['title'] = 'Log Naskah Keluar';
+        $data['title'] = 'Log Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->User_model->userLogged();

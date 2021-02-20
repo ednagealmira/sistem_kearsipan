@@ -81,4 +81,10 @@ class User_model extends CI_Model
         return $this->db->get('naskah')->result_array();
     }
 
+    public function deleteNaskah($naskah_id)
+    {
+        $this->db->where('id', $naskah_id);
+        $this->db->delete('naskah');
+    }
+
 }

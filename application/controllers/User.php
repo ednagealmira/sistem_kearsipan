@@ -108,7 +108,7 @@ class User extends CI_Controller
             ];
             $this->User_model->addNaskah($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrasi naskah berhasil!</div>');
-            redirect('user/registrasinaskah');
+            redirect('user/lognaskah');
         }
     }
 
@@ -148,4 +148,12 @@ class User extends CI_Controller
         $this->load->view('user/lognaskah', $data);
         $this->load->view('templates/footer');
     }
+
+    public function naskahdelete($naskah_id)
+    {
+        $this->User_model->deleteNaskah($naskah_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
+        redirect('user/lognaskah');
+    }
+
 }

@@ -140,6 +140,8 @@ class User extends CI_Controller
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->User_model->userLogged();
+        $data['listnaskah'] = $this->User_model->getListNaskah();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

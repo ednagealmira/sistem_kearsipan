@@ -75,4 +75,10 @@ class User_model extends CI_Model
     {
         $this->db->insert('naskah', $data);
     }
+
+    public function getListNaskah()
+    {
+        return $this->db->get('naskah')->result_array();
+    }
+
 }

@@ -73,7 +73,42 @@ class User extends CI_Controller
             $this->load->view('user/registrasinaskah', $data);
             $this->load->view('templates/footer');
         } else {
-            var_dump($this->input->post('turgensi'));
+            // validasi berhasil
+            $userlogged = $this->User_model->userLogged();
+            
+            $data = [
+                // ditambahkan true untuk menghindari XSS (cross-site scripting)
+                'tgl_regis' => time(),
+                'role_id' => $userlogged['role_id'],
+                'jenis_id' => $this->input->post('jnaskah'),
+                'tperkembangan_id' => $this->input->post('tperkembangan'),
+                'tgl_naskah' => strtotime($this->input->post('tglnaskah')),
+                'nomor' => htmlspecialchars($this->input->post('nonaskah')),
+                'nomor_agenda' => htmlspecialchars($this->input->post('noagenda')),
+                'hal' => htmlspecialchars($this->input->post('hal')),
+                'urgensi_id' => $this->input->post('turgensi'),
+                'sifat_id' => $this->input->post('sifatnaskah'),
+                'kategori_id' => $this->input->post('kategoriarsip'),
+                'taksespublik_id' => $this->input->post('taksespublik'),
+                'taksespublik_id' => $this->input->post('taksespublik'),
+                'pengirim' => 'internal',
+                'instansi_pengirim' => htmlspecialchars($this->input->post('instansipengirim')),
+                'nama_pengirim' => htmlspecialchars($this->input->post('namapengirim')),
+                'jabatan_pengirim' => htmlspecialchars($this->input->post('jabatanpengirim')),
+                'penerima' => htmlspecialchars($this->input->post('penerima')),
+                'tembusan' => htmlspecialchars($this->input->post('tembusan')),
+                'media_id' => $this->input->post('mediaarsip'),
+                'bahasa_id' => $this->input->post('bahasa'),
+                'isi' => htmlspecialchars($this->input->post('isiringkas')),
+                'tesaurus' => htmlspecialchars($this->input->post('tesaurus')),
+                'statusvital_id' => $this->input->post('statusvital'),
+                'jumlah' => $this->input->post('jumlah'),
+                'satuanjumlah_id' => $this->input->post('satuanjumlah'),
+                'tipe' => 'inbox',
+            ];
+            $this->User_model->addNaskah($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrasi naskah berhasil!</div>');
+            redirect('user/registrasinaskah');
         }
     }
 

@@ -162,7 +162,7 @@ class Admin extends CI_Controller
         } else {
             //validasi berhasil
             $data = [
-                //ditambahkan true untuk menghindari XSS (cross-side scripting)
+                //ditambahkan true untuk menghindari XSS (cross-site scripting)
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),

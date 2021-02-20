@@ -20,4 +20,9 @@ class User_model extends CI_Model
         $template = $this->db->get('doc_template')->row_array();
         return $template['file_name'];
     }
+
+    public function addNaskah($data)
+    {
+        $this->db->insert('naskah', $data);
+    }
 }

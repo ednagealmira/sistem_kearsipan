@@ -163,6 +163,12 @@ class Adminpusat_model extends CI_Model
         $this->db->update('naskah_tperkembangan');
     }
     
+    // -------------------------- Tingkat Urgensi --------------------------
+
+    public function getListUrgensi()
+    {
+        return $this->db->get('naskah_urgensi')->result_array();
+    }
 
     // -------------------------- Template --------------------------
 

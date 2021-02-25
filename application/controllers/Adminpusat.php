@@ -398,7 +398,23 @@ class Adminpusat extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Item berhasil dihapus.</div>');
         redirect('adminpusat/tperkembangan');
     }
-    
+
+    // -------------------------- Pengaturan Tingkat Urgensi --------------------------
+
+    public function urgensi()
+    {
+        $data['title'] = 'Pengaturan Tingkat Urgensi';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['urgensi'] = $this->Adminpusat_model->getListUrgensi();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/urgensi', $data);
+        $this->load->view('templates/footer');
+    }
+
     // -------------------------- Template Dokumen --------------------------
     public function templatedoc()
     {

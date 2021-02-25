@@ -299,6 +299,31 @@ class Adminpusat extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sifat berhasil dihapus.</div>');
         redirect('adminpusat/sifatnaskah');
     }
+
+    public function sifatedit($sifat_id)
+    {
+        $this->form_validation->set_rules('sifat', 'Sifat', 'required|trim', [
+            'required' => 'Sifat Naskah harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Edit Pengaturan Sifat Naskah';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $data['sifat_edit'] = $this->Adminpusat_model->getSifatById($sifat_id);
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/sifatnaskah_edit', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $sifat = $this->input->post('sifat');
+            $this->Adminpusat_model->editSifat($sifat_id, $sifat);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sifat Naskah berhasil diperbarui!</div>');
+            redirect('adminpusat/sifatnaskah');
+        }
+    }
     
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 

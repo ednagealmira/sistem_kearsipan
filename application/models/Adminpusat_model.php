@@ -119,6 +119,19 @@ class Adminpusat_model extends CI_Model
         $this->db->delete('naskah_sifat');
     }
 
+    public function getSifatById($sifat_id)
+    {
+        $this->db->where('id', $sifat_id);
+        return $this->db->get('naskah_sifat')->row_array();
+    }
+    
+    public function editSifat($sifat_id, $sifat_naskah)
+    {
+        $this->db->set('sifat', $sifat_naskah);
+        $this->db->where('id', $sifat_id);
+        $this->db->update('naskah_sifat');
+    }
+
     // -------------------------- Tingkat Perkembangan --------------------------
 
     public function getListTP()

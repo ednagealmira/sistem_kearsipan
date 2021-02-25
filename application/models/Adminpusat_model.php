@@ -108,6 +108,11 @@ class Adminpusat_model extends CI_Model
         return $this->db->get('naskah_sifat')->result_array();
     }
 
+    public function addSifat($data)
+    {
+        $this->db->insert('naskah_sifat', $data);
+    }
+
     // -------------------------- Tingkat Perkembangan --------------------------
 
     public function getListTP()

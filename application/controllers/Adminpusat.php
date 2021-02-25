@@ -265,6 +265,33 @@ class Adminpusat extends CI_Controller
         $this->load->view('adminpusat/sifatnaskah', $data);
         $this->load->view('templates/footer');
     }
+
+    public function sifatnaskah_add()
+    {
+        $this->form_validation->set_rules('sifat', 'Sifat', 'required|trim', [
+            'required' => 'Sifat Naskah harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Tambah Pengaturan Sifat Naskah';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/sifatnaskah_add', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = [
+                'sifat' => ($this->input->post('sifat'))
+            ];
+            $this->Adminpusat_model->addSifat($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sifat Naskah berhasil ditambahkan!</div>');
+            redirect('adminpusat/sifatnaskah');
+        }
+        
+    }
     
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 

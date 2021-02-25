@@ -22,7 +22,7 @@
                                     <tbody>
                                         <?php $i = 1; ?>
                                         <?php foreach ($listnaskah as $n) : ?>
-                                        <tr>
+                                        <tr class='clickable-row' data-href='detailnaskah'>
                                             <th scope="row"><?= $i; ?></th>
                                             <td><?= $n['penerima']; ?></td>
                                             <td><?= $n['hal']; ?></td>

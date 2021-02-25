@@ -242,6 +242,13 @@ class Adminpusat extends CI_Controller
         }
         
     }
+
+    public function mediadelete($media_id)
+    {
+        $this->Adminpusat_model->deleteMedia($media_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Media berhasil dihapus.</div>');
+        redirect('adminpusat/mediaarsip');
+    }
     
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 

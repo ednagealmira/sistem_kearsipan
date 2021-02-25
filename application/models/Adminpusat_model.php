@@ -87,12 +87,18 @@ class Adminpusat_model extends CI_Model
         $this->db->where('id', $media_id);
         return $this->db->get('naskah_media')->row_array();
     }
-    
+
     public function editMedia($media_id, $arsip_media)
     {
         $this->db->set('media_arsip', $arsip_media);
         $this->db->where('id', $media_id);
         $this->db->update('naskah_media');
+    }
+
+    public function deleteMedia($media_id)
+    {
+        $this->db->where('id', $media_id);
+        $this->db->delete('naskah_media');
     }
 
     // -------------------------- Tingkat Perkembangan --------------------------

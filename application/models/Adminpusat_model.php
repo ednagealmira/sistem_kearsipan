@@ -7,6 +7,37 @@ class Adminpusat_model extends CI_Model
         $username = $this->session->userdata('username');
         return $this->db->get_where('user', ['username' => $username])->row_array();
     }
+    
+    // -------------------------- Bahasa --------------------------
+
+    public function getListBahasa()
+    {
+        return $this->db->get('naskah_bahasa')->result_array();
+    }
+
+    public function deleteBahasa($bahasa_id)
+    {
+        $this->db->where('id', $bahasa_id);
+        $this->db->delete('naskah_bahasa');
+    }
+
+    public function getBahasaById($bahasa_id)
+    {
+        $this->db->where('id', $bahasa_id);
+        return $this->db->get('naskah_bahasa')->row_array();
+    }
+
+    public function addBahasa($data)
+    {
+        $this->db->insert('naskah_bahasa', $data);
+    }
+
+    public function editBahasa($bahasa_id, $bahasa_naskah)
+    {
+        $this->db->set('bahasa', $bahasa_naskah);
+        $this->db->where('id', $bahasa_id);
+        $this->db->update('naskah_bahasa');
+    }
 
     // -------------------------- Jenis Naskah --------------------------
 

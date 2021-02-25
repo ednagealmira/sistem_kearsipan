@@ -11,7 +11,7 @@ class Adminpusat extends CI_Controller
         $this->load->model('Adminpusat_model');
     }
 
-        // -------------------------- Pengaturan Umum --------------------------
+    // -------------------------- Pengaturan Umum --------------------------
 
     public function index()
     {
@@ -28,6 +28,78 @@ class Adminpusat extends CI_Controller
 
     // -------------------------- Pengaturan Bahasa --------------------------
 
+    public function naskahbahasa()
+    {
+        $data['title'] = 'Pengaturan Bahasa';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['bahasa'] = $this->Adminpusat_model->getListBahasa();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/naskahbahasa', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function naskahbahasa_add()
+    {
+        $this->form_validation->set_rules('bahasa', 'Bahasa', 'required|trim', [
+            'required' => 'Bahasa harus diisi.'
+        ]);
+        if  ($this->form_validation->run() == false){
+            $data['title'] = 'Tambah Pengaturan Bahasa';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/naskahbahasa_add', $data);
+            $this->load->view('templates/footer');
+        }
+        else {
+            $data = [
+                'bahasa' => ($this->input->post('bahasa'))
+            ];
+            $this->Adminpusat_model->addBahasa($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Bahasa berhasil ditambahkan!</div>');
+            redirect('adminpusat/naskahbahasa');
+        }
+    }
+
+    public function bahasaedit($bahasa_id)
+    {
+        $this->form_validation->set_rules('bahasa', 'Bahasa', 'required|trim', [
+            'required' => 'Bahasa harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Edit Pengaturan Bahasa';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $data['bahasa_edit'] = $this->Adminpusat_model->getBahasaById($bahasa_id);
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/naskahbahasa_edit', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $bahasa = $this->input->post('bahasa');
+            $this->Adminpusat_model->editBahasa($bahasa_id, $bahasa);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Bahasa berhasil diperbarui!</div>');
+            redirect('adminpusat/naskahbahasa');
+        }
+    }
+
+    public function bahasadelete($bahasa_id)
+    {
+        $this->Adminpusat_model->deleteBahasa($bahasa_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Bahasa berhasil dihapus.</div>');
+        redirect('adminpusat/naskahbahasa');
+    }
+  
     // -------------------------- Pengaturan Jenis Naskah --------------------------
 
     public function jenisnaskah()

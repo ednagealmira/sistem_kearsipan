@@ -189,6 +189,33 @@ class Adminpusat extends CI_Controller
         $this->load->view('adminpusat/mediaarsip', $data);
         $this->load->view('templates/footer');
     }
+
+    public function mediaarsip_add()
+    {
+        $this->form_validation->set_rules('media_arsip', 'Media', 'required|trim', [
+            'required' => 'Media Arsip harus diisi.'
+        ]);
+        if ($this->form_validation->run() == false){
+            $data['title'] = 'Tambah Pengaturan Media Arsip';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/mediaarsip_add', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = [
+                'media_arsip' => ($this->input->post('media_arsip'))
+            ];
+            $this->Adminpusat_model->addMedia($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Media Arsip berhasil ditambahkan!</div>');
+            redirect('adminpusat/mediaarsip');
+        }
+        
+    }
     
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 

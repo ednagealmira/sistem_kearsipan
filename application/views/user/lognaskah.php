@@ -22,13 +22,16 @@
                                     <tbody>
                                         <?php $i = 1; ?>
                                         <?php foreach ($listnaskah as $n) : ?>
-                                        <tr class='clickable-row' data-href='detailnaskah'>
+                                        <tr>
                                             <th scope="row"><?= $i; ?></th>
                                             <td><?= $n['penerima']; ?></td>
                                             <td><?= $n['hal']; ?></td>
                                             <td><?= $n['isi']; ?></td>
                                             <td><?= date('d-m-Y', $n['tgl_naskah']); ?></td>
                                             <td>
+                                                <a href="<?= base_url('user/detailnaskah'); ?>" class="btn btn-info btn-circle btn-sm">
+                                                    <i class="fas fa-fw fa-info"></i>
+                                                </a>
                                                 <a href="<?= base_url('user/naskahdelete/') . $n['id']; ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Anda yakin ingin menghapus naskah <?= $n['hal']; ?>?')">
                                                     <i class="fas fa-fw fa-trash"></i>
                                                 </a>

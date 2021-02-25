@@ -70,6 +70,13 @@ class Adminpusat_model extends CI_Model
         $this->db->update('naskah_jenis');
     }
 
+    // -------------------------- Media Arsip --------------------------
+
+    public function getListMedia()
+    {
+        return $this->db->get('naskah_media')->result_array();
+    }
+
     // -------------------------- Tingkat Perkembangan --------------------------
 
     public function getListTP()

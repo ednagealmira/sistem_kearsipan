@@ -173,6 +173,23 @@ class Adminpusat extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Jenis berhasil dihapus.</div>');
         redirect('adminpusat/jenisnaskah');
     }
+
+    // -------------------------- Pengaturan Media Arsip --------------------------
+
+    public function mediaarsip()
+    {
+        $data['title'] = 'Pengaturan Media Arsip';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['media'] = $this->Adminpusat_model->getListMedia();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/mediaarsip', $data);
+        $this->load->view('templates/footer');
+    }
+    
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 
     public function tperkembangan()

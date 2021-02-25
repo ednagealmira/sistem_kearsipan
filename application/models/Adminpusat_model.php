@@ -175,6 +175,25 @@ class Adminpusat_model extends CI_Model
         $this->db->insert('naskah_urgensi', $data);
     }
 
+    public function deleteUrgensi($urgensi_id)
+    {
+        $this->db->where('id', $urgensi_id);
+        $this->db->delete('naskah_urgensi');
+    }
+
+    public function getUrgensiById($urgensi_id)
+    {
+        $this->db->where('id', $urgensi_id);
+        return $this->db->get('naskah_urgensi')->row_array();
+    }
+
+    public function editUrgensi($urgensi_id, $tingkat_urgensi)
+    {
+        $this->db->set('urgensi', $tingkat_urgensi);
+        $this->db->where('id', $urgensi_id);
+        $this->db->update('naskah_urgensi');
+    }
+
     // -------------------------- Template --------------------------
 
     public function getListTemplate()

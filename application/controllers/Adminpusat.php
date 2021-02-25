@@ -441,6 +441,38 @@ class Adminpusat extends CI_Controller
         }
     }
 
+    public function urgensidelete($urgensi_id)
+    {
+        $this->Adminpusat_model->deleteUrgensi($urgensi_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Item berhasil dihapus.</div>');
+        redirect('adminpusat/urgensi');
+    }
+
+    public function urgensiedit($urgensi_id)
+    {
+        $this->form_validation->set_rules('urgensi', 'Tingkat Urgensi', 'required|trim', [
+            'required' => 'Tingkat Urgensi harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Edit Pengaturan Tingkat Urgensi';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $data['urgensi_edit'] = $this->Adminpusat_model->getUrgensiById($urgensi_id);
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/urgensi_edit', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $urgensi = $this->input->post('urgensi');
+            $this->Adminpusat_model->editUrgensi($urgensi_id, $urgensi);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tingkat Urgensi berhasil diperbarui!</div>');
+            redirect('adminpusat/urgensi');
+        }
+    }
+
     // -------------------------- Template Dokumen --------------------------
     public function templatedoc()
     {

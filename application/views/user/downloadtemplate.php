@@ -5,8 +5,8 @@
                     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Daftar Template</h6>
+                        <div class="card-header py-3 bg-gradient-primary">
+                            <h6 class="m-0 font-weight-bold text-white text-center">Daftar Template</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

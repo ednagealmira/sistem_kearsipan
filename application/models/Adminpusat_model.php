@@ -8,6 +8,71 @@ class Adminpusat_model extends CI_Model
         return $this->db->get_where('user', ['username' => $username])->row_array();
     }
 
+    // -------------------------- Jenis Naskah --------------------------
+
+    public function getListJenis()
+    {
+        return $this->db->get('naskah_jenis')->result_array();
+    }
+
+    public function deleteJenis($jenis_id)
+    {
+        $this->db->where('id', $jenis_id);
+        $this->db->delete('naskah_jenis');
+    }
+
+    public function getJenisById($jenis_id)
+    {
+        $this->db->where('id', $jenis_id);
+        return $this->db->get('naskah_jenis')->row_array();
+    }
+
+    public function addJenis($data)
+    {
+        $this->db->insert('naskah_jenis', $data);
+    }
+
+    public function editJenis($jenis_id, $jenis_naskah)
+    {
+        $this->db->set('jenis', $jenis_naskah);
+        $this->db->where('id', $jenis_id);
+        $this->db->update('naskah_jenis');
+    }
+
+    // -------------------------- Tingkat Perkembangan --------------------------
+
+    public function getListTP()
+    {
+        return $this->db->get('naskah_tperkembangan')->result_array();
+    }
+
+    public function deleteTP($tp_id)
+    {
+        $this->db->where('id', $tp_id);
+        $this->db->delete('naskah_tperkembangan');
+    }
+
+    public function getTPById($tp_id)
+    {
+        $this->db->where('id', $tp_id);
+        return $this->db->get('naskah_tperkembangan')->row_array();
+    }
+
+    public function addTP($data)
+    {
+        $this->db->insert('naskah_tperkembangan', $data);
+    }
+
+    public function editTP($tp_id, $tingkat_perkembangan)
+    {
+        $this->db->set('tperkembangan', $tingkat_perkembangan);
+        $this->db->where('id', $tp_id);
+        $this->db->update('naskah_tperkembangan');
+    }
+    
+
+    // -------------------------- Template --------------------------
+
     public function getListTemplate()
     {
         return $this->db->get('doc_template')->result_array();

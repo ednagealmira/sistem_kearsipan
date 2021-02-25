@@ -11,6 +11,8 @@ class Adminpusat extends CI_Controller
         $this->load->model('Adminpusat_model');
     }
 
+        // -------------------------- Pengaturan Umum --------------------------
+
     public function index()
     {
         $data['title'] = 'Pengaturan Umum';
@@ -24,6 +26,156 @@ class Adminpusat extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // -------------------------- Pengaturan Bahasa --------------------------
+
+    // -------------------------- Pengaturan Jenis Naskah --------------------------
+
+    public function jenisnaskah()
+    {
+        $data['title'] = 'Pengaturan Jenis Naskah';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['jenis'] = $this->Adminpusat_model->getListJenis();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/jenisnaskah', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function jenisnaskah_add()
+    {
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required|trim', [
+            'required' => 'Jenis Naskah harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Tambah Pengaturan Jenis Naskah';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/jenisnaskah_add', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = [
+                'jenis' => ($this->input->post('jenis'))
+            ];
+            $this->Adminpusat_model->addJenis($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Jenis Naskah berhasil ditambahkan!</div>');
+            redirect('adminpusat/jenisnaskah');
+        }
+    }
+
+    public function jenisedit($jenis_id)
+    {
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required|trim', [
+            'required' => 'Jenis Naskah harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Edit Pengaturan Jenis Naskah';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $data['jenis_edit'] = $this->Adminpusat_model->getJenisById($jenis_id);
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/jenisnaskah_edit', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $jenis = $this->input->post('jenis');
+            $this->Adminpusat_model->editJenis($jenis_id, $jenis);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Jenis Naskah berhasil diperbarui!</div>');
+            redirect('adminpusat/jenisnaskah');
+        }
+    }
+
+    public function jenisdelete($jenis_id)
+    {
+        $this->Adminpusat_model->deleteJenis($jenis_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Jenis berhasil dihapus.</div>');
+        redirect('adminpusat/jenisnaskah');
+    }
+    // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
+
+    public function tperkembangan()
+    {
+        $data['title'] = 'Pengaturan Tingkat Perkembangan';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['tperkembangan'] = $this->Adminpusat_model->getListTP();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/tperkembangan', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function tperkembangan_add()
+    {
+        $this->form_validation->set_rules('tperkembangan', 'Tingkat Perkembangan', 'required|trim', [
+            'required' => 'Tingkat Perkembangan harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Tambah Pengaturan Tingkat Perkembangan';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/tperkembangan_add', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data = [
+                'tperkembangan' => ($this->input->post('tperkembangan'))
+            ];
+            $this->Adminpusat_model->addTP($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tingkat Perkembangan berhasil ditambahkan!</div>');
+            redirect('adminpusat/tperkembangan');
+        }
+    }
+
+    public function tpedit($tp_id)
+    {
+        $this->form_validation->set_rules('tperkembangan', 'Tingkat Perkembangan', 'required|trim', [
+            'required' => 'Tingkat Perkembangan harus diisi.'
+        ]);
+        if($this->form_validation->run() == false){
+            $data['title'] = 'Edit Pengaturan Tingkat Perkembangan';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->Adminpusat_model->userLogged();
+            $data['tp_edit'] = $this->Adminpusat_model->getTPById($tp_id);
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('adminpusat/tperkembangan_edit', $data);
+            $this->load->view('templates/footer');
+        }   
+        else{
+            $tperkembangan = $this->input->post('tperkembangan');
+            $this->Adminpusat_model->editTP($tp_id, $tperkembangan);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Tingkat Perkembangan berhasil diperbarui!</div>');
+            redirect('adminpusat/tperkembangan');
+        }
+    }
+
+    public function tpdelete($tp_id)
+    {
+        $this->Adminpusat_model->deleteTP($tp_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Item berhasil dihapus.</div>');
+        redirect('adminpusat/tperkembangan');
+    }
+    
+    // -------------------------- Template Dokumen --------------------------
     public function templatedoc()
     {
         $data['title'] = 'Template Dokumen';

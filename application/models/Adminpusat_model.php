@@ -170,6 +170,11 @@ class Adminpusat_model extends CI_Model
         return $this->db->get('naskah_urgensi')->result_array();
     }
 
+    public function addUrgensi($data)
+    {
+        $this->db->insert('naskah_urgensi', $data);
+    }
+
     // -------------------------- Template --------------------------
 
     public function getListTemplate()

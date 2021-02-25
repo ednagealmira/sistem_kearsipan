@@ -292,6 +292,13 @@ class Adminpusat extends CI_Controller
         }
         
     }
+
+    public function sifatdelete($sifat_id)
+    {
+        $this->Adminpusat_model->deleteSifat($sifat_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sifat berhasil dihapus.</div>');
+        redirect('adminpusat/sifatnaskah');
+    }
     
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 

@@ -113,6 +113,12 @@ class Adminpusat_model extends CI_Model
         $this->db->insert('naskah_sifat', $data);
     }
 
+    public function deleteSifat($sifat_id)
+    {
+        $this->db->where('id', $sifat_id);
+        $this->db->delete('naskah_sifat');
+    }
+
     // -------------------------- Tingkat Perkembangan --------------------------
 
     public function getListTP()

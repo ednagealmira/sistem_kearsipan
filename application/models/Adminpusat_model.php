@@ -101,6 +101,13 @@ class Adminpusat_model extends CI_Model
         $this->db->delete('naskah_media');
     }
 
+    // -------------------------- Sifat Naskah --------------------------
+
+    public function getListSifat()
+    {
+        return $this->db->get('naskah_sifat')->result_array();
+    }
+
     // -------------------------- Tingkat Perkembangan --------------------------
 
     public function getListTP()

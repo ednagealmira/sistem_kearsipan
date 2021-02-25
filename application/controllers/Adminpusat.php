@@ -249,6 +249,22 @@ class Adminpusat extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Media berhasil dihapus.</div>');
         redirect('adminpusat/mediaarsip');
     }
+
+    // -------------------------- Sifat Naskah --------------------------
+
+    public function sifatnaskah()
+    {
+        $data['title'] = 'Pengaturan Sifat Naskah';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->Adminpusat_model->userLogged();
+        $data['sifat'] = $this->Adminpusat_model->getListSifat();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('adminpusat/sifatnaskah', $data);
+        $this->load->view('templates/footer');
+    }
     
     // -------------------------- Pengaturan Tingkat Perkembangan --------------------------
 

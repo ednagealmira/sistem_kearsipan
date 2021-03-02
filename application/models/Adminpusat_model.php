@@ -7,6 +7,11 @@ class Adminpusat_model extends CI_Model
         $username = $this->session->userdata('username');
         return $this->db->get_where('user', ['username' => $username])->row_array();
     }
+
+    public function getListPengaturan()
+    {
+        return $this->db->get('pengaturan_naskah')->result_array();
+    }
     
     // -------------------------- Bahasa --------------------------
 

@@ -17,12 +17,9 @@
                                     Pilih Pengaturan Naskah‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="adminpusat/naskahbahasa">Pengaturan Bahasa</a>
-                                    <a class="dropdown-item" href="adminpusat/jenisnaskah">Pengaturan Jenis Naskah</a>
-                                    <a class="dropdown-item" href="adminpusat/mediaarsip">Pengaturan Media Arsip</a>
-                                    <a class="dropdown-item" href="adminpusat/sifatnaskah">Pengaturan Sifat Naskah</a>
-                                    <a class="dropdown-item" href="adminpusat/tperkembangan">Pengaturan Tingkat Perkembangan</a>
-                                    <a class="dropdown-item" href="adminpusat/urgensi">Pengaturan Tingkat Urgensi</a>
+                                    <?php foreach($menupengaturan as $m) : ?>
+                                        <a class="dropdown-item" href=<?= base_url($m['url']); ?>><?= $m['menu']; ?></a>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>

@@ -51,7 +51,7 @@ class Profil extends CI_Controller
             $this->Profil_model->updateuser($nama, $jabatan, $username);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Perubahan pada profil berhasil disimpan.</div>');
-            redirect('user');
+            redirect('profil');
         }
     }
 

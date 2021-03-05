@@ -6,7 +6,7 @@
 
                     <div class="row">
                         <div class="col-lg-8">
-                            <form action="<?= base_url('user/edit'); ?>" method="post">
+                            <form action="<?= base_url('profil/edit'); ?>" method="post">
                                 <div class="form-group row">
                                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">

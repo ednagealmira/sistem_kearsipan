@@ -248,8 +248,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-end">
-                                    <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-primary btn-block">Registrasi</button>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-secondary btn-block">Cancel</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-primary btn-block">Lanjut</button>
                                     </div>
                                 </div>
                             </form>

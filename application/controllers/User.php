@@ -107,7 +107,52 @@ class User extends CI_Controller
                 'tipe' => 'inbox',
             ];
             $this->User_model->addNaskah($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrasi naskah berhasil!</div>');
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrasi naskah berhasil!</div>');
+            redirect('user/registrasi_addfile');
+        }
+    }
+
+    public function registrasi_addfile()
+    {
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Sisipkan File Digital';
+            $data['menu'] = $this->Sidebar_model->getRoleMenu();
+            $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['user'] = $this->User_model->userLogged();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('user/registrasi_addfile', $data);
+            $this->load->view('templates/footer');
+        } else {
+            if ($_FILES['file_naskah']['name']) {
+
+                $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
+                $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file_naskah')) {
+                    $file_name = $this->upload->data('file_name');
+                } else {
+                    // $error = array('error' => $this->upload->display_errors());
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file *.pdf, *.jpg, *.jpeg, atau *.png dengan ukuran maksimal 2048KB.</div>');
+                    redirect('user/registrasi_addfile');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File template belum dipilih.</div>');
+                redirect('user/registrasi_addfile');                
+            }
+
+            $data = [
+                'naskah_id' => '1',
+                'file_name' => $file_name,
+            ];
+
+            $this->Adminpusat_model->addTemplate($data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil ditambahkan!</div>');
             redirect('user/lognaskah');
         }
     }

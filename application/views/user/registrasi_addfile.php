@@ -7,26 +7,19 @@
                     <div class="row">
                         <div class="col-lg-8">
                         <?= $this->session->flashdata('message'); ?>
-                            <?= form_open_multipart('adminpusat/templatedoc_upload'); ?>
-                                <div class="form-group row">
-                                    <label for="template_desc" class="col-sm-2 col-form-label">Keterangan</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="template_desc" name="template_desc" value="<?= set_value('template_desc'); ?>">
-                                        <?= form_error('template_desc', '<small class="text-danger pl-3">', '</small>') ; ?>
-                                    </div>
-                                </div>
+                            <?= form_open_multipart('user/registrasi_addfile'); ?>
                                 <div class="form-group row">
                                     <div class="col-sm-2 col-form-label">Dokumen</div>
                                     <div class="col-sm-10">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="file_template" name="file_template">
-                                            <label class="custom-file-label" for="file_template">Pilih File</label>
+                                            <input type="file" class="custom-file-input" id="file_naskah" name="file_naskah[]">
+                                            <label class="custom-file-label" for="file_naskah">Pilih File</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row justify-content-end">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Upload Template</button>
+                                        <button type="submit" class="btn btn-primary">Upload File</button>
                                     </div>
                                 </div>
                             </form>

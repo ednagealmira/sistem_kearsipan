@@ -76,6 +76,11 @@ class User_model extends CI_Model
         $this->db->insert('naskah', $data);
     }
 
+    public function addFileNaskah($data = array()){
+        // Insert Ke Database dengan Banyak Data Sekaligus
+        return $this->db->insert_batch('naskah_files',$data);
+    }
+
     public function getListNaskah()
     {
         return $this->db->get('naskah')->result_array();

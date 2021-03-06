@@ -125,35 +125,83 @@ class User extends CI_Controller
             $this->load->view('user/registrasi_addfile', $data);
             $this->load->view('templates/footer');
         } else {
-            if ($_FILES['file_naskah']['name']) {
+            // Hitung Jumlah File yang dipilih
+            $jumlahData = count($_FILES['file_naskah']['name']);
 
+            // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
+            for ($i=0; $i < $jumlahData ; $i++) {
+
+                // Inisialisasi Nama,Tipe,Dll.
+                $_FILES['file']['name']     = $_FILES['file_naskah']['name'][$i];
+                $_FILES['file']['type']     = $_FILES['file_naskah']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['file_naskah']['tmp_name'][$i];
+                $_FILES['file']['size']     = $_FILES['file_naskah']['size'][$i];
+
+                // Konfigurasi Upload
                 $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
                 $config['allowed_types'] = 'pdf|jpg|jpeg|png';
                 $config['max_size']     = '2048';
 
+                // Memanggil Library Upload dan Setting Konfigurasi
                 $this->load->library('upload', $config);
+                $this->upload->initialize($config);
 
-                if ($this->upload->do_upload('file_naskah')) {
-                    $file_name = $this->upload->data('file_name');
+                if($this->upload->do_upload('file')){ // Jika Berhasil Upload
+                    $fileData = $this->upload->data(); // Lakukan Upload Data
+                    // Membuat Variable untuk dimasukkan ke Database
+                    $uploadData[$i]['judul'] = $fileData['file_name']; 
                 } else {
                     // $error = array('error' => $this->upload->display_errors());
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file *.pdf, *.jpg, *.jpeg, atau *.png dengan ukuran maksimal 2048KB.</div>');
                     redirect('user/registrasi_addfile');
                 }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File template belum dipilih.</div>');
-                redirect('user/registrasi_addfile');                
             }
 
-            $data = [
-                'naskah_id' => '1',
-                'file_name' => $file_name,
-            ];
+            if($uploadData !== null){ // Jika Berhasil Upload
+                // Insert ke Database 
+                $insert = $this->User_model->addFileNaskah($uploadData);
+                
+                if($insert){ // Jika Berhasil Insert
+                    echo "
+                        <a href='".base_url()."'> Kembali </a> 
+                        <br>
+                        Berhasil Upload ";
+                }else{ // Jika Tidak Berhasil Insert
+                    echo "Gagal Upload";
+                }
+    
+            }
 
-            $this->Adminpusat_model->addTemplate($data);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Template berhasil ditambahkan!</div>');
-            redirect('user/lognaskah');
+            // if ($_FILES['file_naskah']['name']) {
+
+            //     $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
+            //     $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+            //     $config['max_size']     = '2048';
+
+            //     $this->load->library('upload', $config);
+
+            //     if ($this->upload->do_upload('file_naskah')) {
+            //         $file_name = $this->upload->data('file_name');
+            //     } else {
+            //         // $error = array('error' => $this->upload->display_errors());
+            //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file *.pdf, *.jpg, *.jpeg, atau *.png dengan ukuran maksimal 2048KB.</div>');
+            //         redirect('user/registrasi_addfile');
+            //     }
+            // } else {
+            //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File naskah belum dipilih.</div>');
+            //     redirect('user/registrasi_addfile');                
+            // }
+
+            // $data = [
+            //     'naskah_id' => '1',
+            //     'file_name' => $file_name,
+            // ];
+
+            // $this->User_model->addFileNaskah($data);
+
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">naskah berhasil ditambahkan!</div>');
+            // redirect('user/lognaskah');
         }
     }
 

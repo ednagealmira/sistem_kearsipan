@@ -161,7 +161,7 @@ class User extends CI_Controller
 
         // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
         for ($i=0; $i < $jumlahData ; $i++) {
-
+            
             // Inisialisasi Nama,Tipe,Dll.
             $_FILES['file']['name']     = $_FILES['file_naskah']['name'][$i];
             $_FILES['file']['type']     = $_FILES['file_naskah']['type'][$i];

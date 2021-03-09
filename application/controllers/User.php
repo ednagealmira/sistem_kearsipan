@@ -161,7 +161,7 @@ class User extends CI_Controller
 
         // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
         for ($i=0; $i < $jumlahData ; $i++) {
-            
+
             // Inisialisasi Nama,Tipe,Dll.
             $_FILES['file']['name']     = $_FILES['file_naskah']['name'][$i];
             $_FILES['file']['type']     = $_FILES['file_naskah']['type'][$i];
@@ -180,6 +180,7 @@ class User extends CI_Controller
             if($this->upload->do_upload('file')){ // Jika Berhasil Upload
                 $fileData = $this->upload->data(); // Lakukan Upload Data
                 // Membuat Variable untuk dimasukkan ke Database
+                $uploadData[$i]['naskah_id'] = '3';
                 $uploadData[$i]['file_name'] = $fileData['file_name']; 
             } else {
                 // $error = array('error' => $this->upload->display_errors());

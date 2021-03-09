@@ -188,19 +188,17 @@ class User extends CI_Controller
             }
         }
 
-        if($uploadData !== null){ // Jika Berhasil Upload
+        if($uploadData != null){ // Jika Berhasil Upload
             // Insert ke Database 
             $insert = $this->User_model->addFileNaskah($uploadData);
             
             if($insert){ // Jika Berhasil Insert
-                echo "
-                    <a href='".base_url()."'> Kembali </a> 
-                    <br>
-                    Berhasil Upload ";
-            }else{ // Jika Tidak Berhasil Insert
-                echo "Gagal Upload";
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil diregistrasi!</div>');
+                redirect('user/lognaskah');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Gagal menambahkan file.</div>');
+                redirect('user/registrasi_addfile');
             }
-
         }
     }
 

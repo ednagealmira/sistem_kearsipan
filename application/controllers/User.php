@@ -114,65 +114,15 @@ class User extends CI_Controller
 
     public function registrasi_addfile()
     {
-        if ($this->form_validation->run() == false) {
-            $data['title'] = 'Sisipkan File Digital';
-            $data['menu'] = $this->Sidebar_model->getRoleMenu();
-            $data['submenu'] = $this->Sidebar_model->getSideMenu();
-            $data['user'] = $this->User_model->userLogged();
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('user/registrasi_addfile', $data);
-            $this->load->view('templates/footer');
-        } else {
-            // Hitung Jumlah File yang dipilih
-            $jumlahData = count($_FILES['file_naskah']['name']);
-
-            // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
-            for ($i=0; $i < $jumlahData ; $i++) {
-
-                // Inisialisasi Nama,Tipe,Dll.
-                $_FILES['file']['name']     = $_FILES['file_naskah']['name'][$i];
-                $_FILES['file']['type']     = $_FILES['file_naskah']['type'][$i];
-                $_FILES['file']['tmp_name'] = $_FILES['file_naskah']['tmp_name'][$i];
-                $_FILES['file']['size']     = $_FILES['file_naskah']['size'][$i];
-
-                // Konfigurasi Upload
-                $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
-                $config['allowed_types'] = 'pdf|jpg|jpeg|png';
-                $config['max_size']     = '2048';
-
-                // Memanggil Library Upload dan Setting Konfigurasi
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-
-                if($this->upload->do_upload('file')){ // Jika Berhasil Upload
-                    $fileData = $this->upload->data(); // Lakukan Upload Data
-                    // Membuat Variable untuk dimasukkan ke Database
-                    $uploadData[$i]['judul'] = $fileData['file_name']; 
-                } else {
-                    // $error = array('error' => $this->upload->display_errors());
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file *.pdf, *.jpg, *.jpeg, atau *.png dengan ukuran maksimal 2048KB.</div>');
-                    redirect('user/registrasi_addfile');
-                }
-            }
-
-            if($uploadData !== null){ // Jika Berhasil Upload
-                // Insert ke Database 
-                $insert = $this->User_model->addFileNaskah($uploadData);
-                
-                if($insert){ // Jika Berhasil Insert
-                    echo "
-                        <a href='".base_url()."'> Kembali </a> 
-                        <br>
-                        Berhasil Upload ";
-                }else{ // Jika Tidak Berhasil Insert
-                    echo "Gagal Upload";
-                }
-    
-            }
-
-
+        $data['title'] = 'Sisipkan File Digital';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->User_model->userLogged();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/registrasi_addfile', $data);
+        $this->load->view('templates/footer');
             // if ($_FILES['file_naskah']['name']) {
 
             //     $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
@@ -202,6 +152,55 @@ class User extends CI_Controller
 
             // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">naskah berhasil ditambahkan!</div>');
             // redirect('user/lognaskah');
+    }
+
+    public function doAddFileNaskah()
+    {
+        // Hitung Jumlah File yang dipilih
+        $jumlahData = count($_FILES['file_naskah']['name']);
+
+        // Lakukan Perulangan dengan maksimal ulang Jumlah File yang dipilih
+        for ($i=0; $i < $jumlahData ; $i++) {
+
+            // Inisialisasi Nama,Tipe,Dll.
+            $_FILES['file']['name']     = $_FILES['file_naskah']['name'][$i];
+            $_FILES['file']['type']     = $_FILES['file_naskah']['type'][$i];
+            $_FILES['file']['tmp_name'] = $_FILES['file_naskah']['tmp_name'][$i];
+            $_FILES['file']['size']     = $_FILES['file_naskah']['size'][$i];
+
+            // Konfigurasi Upload
+            $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
+            $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+            $config['max_size']     = '2048';
+
+            // Memanggil Library Upload dan Setting Konfigurasi
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if($this->upload->do_upload('file')){ // Jika Berhasil Upload
+                $fileData = $this->upload->data(); // Lakukan Upload Data
+                // Membuat Variable untuk dimasukkan ke Database
+                $uploadData[$i]['file_name'] = $fileData['file_name']; 
+            } else {
+                // $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file *.pdf, *.jpg, *.jpeg, atau *.png dengan ukuran maksimal 2048KB.</div>');
+                redirect('user/registrasi_addfile');
+            }
+        }
+
+        if($uploadData !== null){ // Jika Berhasil Upload
+            // Insert ke Database 
+            $insert = $this->User_model->addFileNaskah($uploadData);
+            
+            if($insert){ // Jika Berhasil Insert
+                echo "
+                    <a href='".base_url()."'> Kembali </a> 
+                    <br>
+                    Berhasil Upload ";
+            }else{ // Jika Tidak Berhasil Insert
+                echo "Gagal Upload";
+            }
+
         }
     }
 

@@ -12,7 +12,7 @@
                             <input type="file" name="gambar[]" multiple><br><br>
                             <button>Upload Gambar</button>
                         <?= form_close(); ?> -->
-                            <?= form_open_multipart('user/registrasi_addfile'); ?>
+                            <?= form_open_multipart('user/doAddFileNaskah'); ?>
                                 <div class="form-group row">
                                     <div class="col-sm-2 col-form-label">Dokumen</div>
                                     <div class="col-sm-10">

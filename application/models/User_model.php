@@ -81,6 +81,13 @@ class User_model extends CI_Model
         return $this->db->insert_batch('naskah_files',$data);
     }
 
+    public function getNaskahID()
+    {
+        $this->db->select_max('id');
+        $naskah = $this->db->get('naskah')->row_array();
+        return $naskah['id'];
+    }
+
     public function getListNaskah()
     {
         return $this->db->get('naskah')->result_array();

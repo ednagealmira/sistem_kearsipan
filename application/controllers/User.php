@@ -180,7 +180,7 @@ class User extends CI_Controller
             if($this->upload->do_upload('file')){ // Jika Berhasil Upload
                 $fileData = $this->upload->data(); // Lakukan Upload Data
                 // Membuat Variable untuk dimasukkan ke Database
-                $uploadData[$i]['naskah_id'] = '3';
+                $uploadData[$i]['naskah_id'] = $this->User_model->getNaskahID();
                 $uploadData[$i]['file_name'] = $fileData['file_name']; 
             } else {
                 // $error = array('error' => $this->upload->display_errors());

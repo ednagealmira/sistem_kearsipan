@@ -211,19 +211,20 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function naskahdelete($naskah_id)
-    {
-        $this->User_model->deleteNaskah($naskah_id);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
-        redirect('user/lognaskah');
-    }
+    // public function naskahdelete($naskah_id)
+    // {
+    //     $this->User_model->deleteNaskah($naskah_id);
+    //     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
+    //     redirect('user/lognaskah');
+    // }
 
-    public function detailnaskah()
+    public function detailnaskah($naskah_id)
     {
         $data['title'] = 'Detail Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->User_model->userLogged();
+        $data['naskahdetail'] = $this->User_model->getNaskahDetail($naskah_id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

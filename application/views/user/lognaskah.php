@@ -29,12 +29,12 @@
                                             <td><?= $n['isi']; ?></td>
                                             <td><?= date('d-m-Y', $n['tgl_naskah']); ?></td>
                                             <td>
-                                                <a href="<?= base_url('user/detailnaskah'); ?>" class="btn btn-info btn-circle btn-sm">
+                                                <a href="<?= base_url('user/detailnaskah/') . $n['id']; ?>" class="btn btn-info btn-circle btn-sm">
                                                     <i class="fas fa-fw fa-info"></i>
                                                 </a>
-                                                <a href="<?= base_url('user/naskahdelete/') . $n['id']; ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Anda yakin ingin menghapus naskah <?= $n['hal']; ?>?')">
+                                                <!-- <a href="<?= base_url('user/naskahdelete/') . $n['id']; ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Anda yakin ingin menghapus naskah <?= $n['hal']; ?>?')">
                                                     <i class="fas fa-fw fa-trash"></i>
-                                                </a>
+                                                </a> -->
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

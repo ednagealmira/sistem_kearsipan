@@ -18,7 +18,11 @@
                                     </tr>
                                     </tr>
                                     <tr>
+                                        <?php if ($naskahdetail['pengirim'] == 'internal') : ?>
                                         <th class="pr-3">Unit Kerja</th>
+                                        <?php else : ?>
+                                        <th class="pr-3">Instansi</th>
+                                        <?php endif; ?>
                                         <td class="pl-3"><?= $naskahdetail['instansi_pengirim']; ?></td>
                                     </tr>
                                     </tr>
@@ -29,7 +33,12 @@
                                     <tr>
                                         <th class="pr-3">Jenis Naskah</th>
                                         <td class="pl-3"><?= $naskahdetail['jenis']; ?></td>
+                                    </tr>                                   
+                                    <tr>
+                                        <th class="pr-3">Tingkat Perkembangan</th>
+                                        <td class="pl-3"><?= $naskahdetail['tp']; ?></td>
                                     </tr>
+
                                 </tbody>
                             </table>
                         </div>

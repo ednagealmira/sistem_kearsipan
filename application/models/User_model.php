@@ -95,21 +95,7 @@ class User_model extends CI_Model
 
     public function getNaskahDetail($naskah_id)
     {
-        $sql = "SELECT n.*, j.jenis as jenis, tp.tperkembangan as tp, u.urgensi as urgensi, s.sifat as sifat, k.kategoriarsip as kategori, tap.taksespublik as tap, m.media_arsip as media, b.bahasa as bahasa, sv.statusvital as statusvital, sj.satuanjumlah as sj
-                FROM `naskah` n 
-                JOIN `naskah_jenis` j ON n.jenis_id = j.id
-                JOIN `naskah_tperkembangan` tp ON n.tperkembangan_id = tp.id
-                JOIN `naskah_urgensi` u ON n.urgensi_id = u.id
-                JOIN `naskah_sifat` s ON n.sifat_id = s.id
-                JOIN `naskah_kategori` k ON n.kategori_id = k.id
-                JOIN `naskah_taksespublik` tap ON n.kategori_id = tap.id
-                JOIN `naskah_media` m ON n.media_id = m.id
-                JOIN `naskah_bahasa` b ON n.bahasa_id = b.id
-                JOIN `naskah_statusvital` sv ON n.statusvital_id = sv.id
-                JOIN `naskah_satuanjumlah` sj ON n.satuanjumlah_id = sj.id
-                WHERE n.id = $naskah_id";
-
-        return $this->db->query($sql)->row_array();
+        return $this->db->get_where('naskah_full', ['id' => $naskah_id])->row_array();
     }
 
     // public function deleteNaskah($naskah_id)

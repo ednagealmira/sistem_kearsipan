@@ -123,35 +123,6 @@ class User extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/registrasi_addfile', $data);
         $this->load->view('templates/footer');
-            // if ($_FILES['file_naskah']['name']) {
-
-            //     $config['upload_path'] = './assets/filesUploaded/naskahdoc/';
-            //     $config['allowed_types'] = 'pdf|jpg|jpeg|png';
-            //     $config['max_size']     = '2048';
-
-            //     $this->load->library('upload', $config);
-
-            //     if ($this->upload->do_upload('file_naskah')) {
-            //         $file_name = $this->upload->data('file_name');
-            //     } else {
-            //         // $error = array('error' => $this->upload->display_errors());
-            //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file *.pdf, *.jpg, *.jpeg, atau *.png dengan ukuran maksimal 2048KB.</div>');
-            //         redirect('user/registrasi_addfile');
-            //     }
-            // } else {
-            //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File naskah belum dipilih.</div>');
-            //     redirect('user/registrasi_addfile');                
-            // }
-
-            // $data = [
-            //     'naskah_id' => '1',
-            //     'file_name' => $file_name,
-            // ];
-
-            // $this->User_model->addFileNaskah($data);
-
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">naskah berhasil ditambahkan!</div>');
-            // redirect('user/lognaskah');
     }
 
     public function doAddFileNaskah()

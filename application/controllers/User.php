@@ -211,12 +211,12 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    // public function naskahdelete($naskah_id)
-    // {
-    //     $this->User_model->deleteNaskah($naskah_id);
-    //     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
-    //     redirect('user/lognaskah');
-    // }
+    public function naskahdelete($naskah_id)
+    {
+        $this->User_model->deleteNaskah($naskah_id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
+        redirect('user/lognaskah');
+    }
 
     public function detailnaskah($naskah_id)
     {

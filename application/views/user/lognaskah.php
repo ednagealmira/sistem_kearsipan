@@ -32,9 +32,11 @@
                                                 <a href="<?= base_url('user/detailnaskah/') . $n['id']; ?>" class="btn btn-info btn-circle btn-sm">
                                                     <i class="fas fa-fw fa-info"></i>
                                                 </a>
-                                                <!-- <a href="<?= base_url('user/naskahdelete/') . $n['id']; ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Anda yakin ingin menghapus naskah <?= $n['hal']; ?>?')">
+                                                <?php if($user['role_id'] == 1) : ?>
+                                                <a href="<?= base_url('user/naskahdelete/') . $n['id']; ?>" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Anda yakin ingin menghapus naskah <?= $n['hal']; ?>?')">
                                                     <i class="fas fa-fw fa-trash"></i>
-                                                </a> -->
+                                                </a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

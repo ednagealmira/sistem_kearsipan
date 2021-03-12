@@ -10,17 +10,20 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-hover table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>Keterangan</th>
                                             <th>Tanggal Upload</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $i = 1; ?>
                                         <?php foreach ($templates as $t) : ?>
                                         <tr>
+                                            <th><?= $i; ?></th>
                                             <td><?= $t['template_desc']; ?></td>
                                             <td><?= date('d-m-Y', $t['upload_date']); ?></td>
                                             <td>
@@ -29,6 +32,7 @@
                                                 </a>
                                             </td>
                                         </tr>
+                                        <?php $i++; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>

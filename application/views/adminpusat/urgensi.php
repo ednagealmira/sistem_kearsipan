@@ -17,7 +17,7 @@
                             <h6 class="m-0 font-weight-bold text-white text-center">Daftar Tingkat Urgensi</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive table-bordered">
                                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>

@@ -24,7 +24,21 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function registrasiNaskah()
+    public function registrasiNaskahMenu()
+    {
+        $data['title'] = 'Registrasi Naskah';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['user'] = $this->User_model->userLogged();
+        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/registrasinaskah_menu', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function registrasiNaskah($status_registrasi)
     {
         $this->form_validation->set_rules('jnaskah', 'Jenis Naskah', 'required|trim', ['required' => 'Jenis Naskah harus diisi.']);
         $this->form_validation->set_rules('tperkembangan', 'Tingkat Perkembangan', 'required|trim', ['required' => 'Tingkat Perkembangan harus diisi.']);
@@ -36,7 +50,6 @@ class User extends CI_Controller
         $this->form_validation->set_rules('sifatnaskah', 'Sifat Naskah', 'required|trim', ['required' => 'Sifat Naskah harus diisi.']);
         $this->form_validation->set_rules('kategoriarsip', 'Kategori Arsip', 'required|trim', ['required' => 'Kategori Arsip harus diisi.']);
         $this->form_validation->set_rules('taksespublik', 'Tingkat Akses Publik', 'required|trim', ['required' => 'Tingkat Akses Publik harus diisi.']);
-        // $this->form_validation->set_rules('refbalasan', 'Referensi Balasan', 'required|trim', ['required' => 'Referensi Balasan harus diisi.']);
         $this->form_validation->set_rules('instansipengirim', 'Instansi Pengirim', 'required|trim', ['required' => 'Instansi Pengirim harus diisi.']);
         $this->form_validation->set_rules('namapengirim', 'Nama Pengirim', 'required|trim', ['required' => 'Nama Pengirim harus diisi.']);
         $this->form_validation->set_rules('jabatanpengirim', 'Jabatan Pengirim', 'required|trim', ['required' => 'Jabatan Pengirim harus diisi.']);
@@ -66,6 +79,7 @@ class User extends CI_Controller
             $data['bahasa'] = $this->User_model->getBahasa();
             $data['statusvital'] = $this->User_model->getStatusVital();
             $data['satuanjumlah'] = $this->User_model->getSatuanJumlah();
+            $data['statusregistrasi'] = $status_registrasi;
             
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -91,7 +105,7 @@ class User extends CI_Controller
                 'kategori_id' => $this->input->post('kategoriarsip'),
                 'taksespublik_id' => $this->input->post('taksespublik'),
                 'taksespublik_id' => $this->input->post('taksespublik'),
-                'pengirim' => 'internal',
+                'pengirim' => $status_registrasi,
                 'instansi_pengirim' => htmlspecialchars($this->input->post('instansipengirim')),
                 'nama_pengirim' => htmlspecialchars($this->input->post('namapengirim')),
                 'jabatan_pengirim' => htmlspecialchars($this->input->post('jabatanpengirim')),

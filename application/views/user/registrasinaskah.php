@@ -6,7 +6,7 @@
 
                     <div class="row">
                         <div class="col-lg-9">
-                            <form action="<?= base_url('user/registrasinaskah'); ?>" method="post">
+                            <form action="<?= base_url('user/registrasinaskah/' . $statusregistrasi); ?>" method="post">
                                 <div class="form-group row">
                                     <label for="jnaskah" class="col-sm-3 col-form-label">Jenis Naskah</label>
                                     <div class="col-sm-9">
@@ -125,16 +125,12 @@
                                         <?= form_error('taksespublik', '<small class="text-danger pl-3">', '</small>') ; ?>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group row">
-                                    <label for="refbalasan" class="col-sm-3 col-form-label">Referensi Balasan</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="refbalasan" name="refbalasan" value="<?= set_value('refbalasan'); ?>">
-                                        <?= form_error('refbalasan', '<small class="text-danger pl-3">', '</small>') ; ?>
-                                    </div>
-                                </div> -->
                                 <div class="form-group row justify-content-center">Pengirim</div>
                                 <div class="form-group row">
-                                    <label for="instansipengirim" class="col-sm-3 col-form-label">Instansi</label>
+                                    <label for="instansipengirim" class="col-sm-3 col-form-label">
+                                        <?php if ($statusregistrasi == 'internal') echo('Unit Kerja');
+                                              else echo('Instansi'); ?>
+                                    </label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="instansipengirim" name="instansipengirim" value="<?= set_value('instansipengirim'); ?>">
                                         <?= form_error('instansipengirim', '<small class="text-danger pl-3">', '</small>') ; ?>

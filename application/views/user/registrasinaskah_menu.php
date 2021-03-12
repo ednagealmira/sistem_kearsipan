@@ -9,12 +9,11 @@
                             <?= $this->session->flashdata('message'); ?>
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pilih Pengaturan Naskah‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
+                                    Pilih Registrasi Naskah ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <?php foreach($menupengaturan as $m) : ?>
-                                        <a class="dropdown-item" href=<?= base_url($m['url']); ?>><?= $m['menu']; ?></a>
-                                    <?php endforeach; ?>
+                                    <a class="dropdown-item" href=<?= base_url('user/registrasinaskah/internal'); ?>>Registrasi Naskah Masuk</a>
+                                    <a class="dropdown-item" href=<?= base_url('user/registrasinaskah/external'); ?>>Registrasi Naskah Keluar</a>
                                 </div>
                             </div>
                         </div>

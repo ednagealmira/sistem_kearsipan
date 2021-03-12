@@ -28,7 +28,7 @@
                                             <td><?= date('d-m-Y', $t['upload_date']); ?></td>
                                             <td>
                                                 <a href="<?= base_url('user/templatedownload/') . $t['id']; ?>" class="btn btn-warning btn-circle btn-sm">
-                                                    <i class="fas fa-fw fa-file-download"></i></i>
+                                                    <i class="fas fa-fw fa-file-download"></i>
                                                 </a>
                                             </td>
                                         </tr>

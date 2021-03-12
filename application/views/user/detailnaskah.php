@@ -116,20 +116,33 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
+                                            <table class="table table-sm table-borderless m-0" width="100%" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row" class="pr-2">Pembuat</th>
+                                                        <td class="pl-2"><?= $naskahdetail['instansi_pengirim']; ?>, <?= $naskahdetail['nama_pengirim']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" class="pr-2">Tanggal Upload</th>
+                                                        <td class="pl-2"><?= date('d-m-Y', $naskahdetail['tgl_regis']); ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                             <table class="table table-sm table-borderless" width="100%" cellspacing="0">
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row" class="pr-3">Pembuat</th>
-                                                        <td class="pl-3"><?= $naskahdetail['instansi_pengirim']; ?>, <?= $naskahdetail['nama_pengirim']; ?></td>
+                                                        <th scope="row">Naskah</th>
                                                     </tr>
+                                                    <?php foreach ($filenaskah as $f) : ?>
                                                     <tr>
-                                                        <th scope="row" class="pr-3">Tanggal Upload</th>
-                                                        <td class="pl-3"><?= date('d-m-Y', $naskahdetail['tgl_regis']); ?></td>
+                                                        <td scope="row">
+                                                            <a href="<?= base_url('user/naskahdownload/') . $f['id']; ?>" class="btn btn-warning btn-circle btn-sm">
+                                                            <i class="fas fa-fw fa-file-download"></i>
+                                                            </a>
+                                                            <?= $f['file_name']; ?>
+                                                        </td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row" class="pr-3">Naskah</th>
-                                                        <td class="pl-3"><?= date('d-m-Y', $naskahdetail['tgl_regis']); ?></td>
-                                                    </tr>
+                                                    <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>

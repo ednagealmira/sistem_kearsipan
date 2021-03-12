@@ -14,7 +14,7 @@ class User_model extends CI_Model
         return $this->db->get('doc_template')->result_array();
     }
 
-    public function getFileName($template_id)
+    public function getTempFileName($template_id)
     {
         $this->db->where('id', $template_id);
         $template = $this->db->get('doc_template')->row_array();
@@ -101,6 +101,13 @@ class User_model extends CI_Model
     public function getListFileNaskah($naskah_id)
     {
         return $this->db->get_where('naskah_files', ['naskah_id' => $naskah_id])->result_array();
+    }
+
+    public function getNaskahFileName($filenaskah_id)
+    {
+        $this->db->where('id', $filenaskah_id);
+        $file_naskah = $this->db->get('naskah_files')->row_array();
+        return $file_naskah['file_name'];
     }
 
     // public function deleteNaskah($naskah_id)

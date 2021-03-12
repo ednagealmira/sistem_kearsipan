@@ -136,7 +136,7 @@
                                                     <?php foreach ($filenaskah as $f) : ?>
                                                     <tr>
                                                         <td scope="row">
-                                                            <a href="<?= base_url('user/naskahdownload/') . $f['id']; ?>" class="btn btn-warning btn-circle btn-sm">
+                                                            <a href="<?= base_url('user/naskahdownload/') . $f['id']; ?>" class="btn btn-warning btn-circle btn-sm mr-2">
                                                             <i class="fas fa-fw fa-file-download"></i>
                                                             </a>
                                                             <?= $f['file_name']; ?>

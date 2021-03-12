@@ -190,7 +190,7 @@ class User extends CI_Controller
 
     public function templatedownload($template_id)
     {
-        $file_name = $this->User_model->getFileName($template_id);
+        $file_name = $this->User_model->getTempFileName($template_id);
         $file_path = './assets/filesUploaded/templatedoc/'.$file_name;
         $this->load->helper('download');
         force_download($file_path, NULL);
@@ -232,6 +232,14 @@ class User extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/detailnaskah', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function naskahdownload($filenaskah_id)
+    {
+        $file_name = $this->User_model->getNaskahFileName($filenaskah_id);
+        $file_path = './assets/filesUploaded/naskahdoc/'.$file_name;
+        $this->load->helper('download');
+        force_download($file_path, NULL);
     }
 
 }

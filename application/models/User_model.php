@@ -98,6 +98,11 @@ class User_model extends CI_Model
         return $this->db->get_where('naskah_full', ['id' => $naskah_id])->row_array();
     }
 
+    public function getListFileNaskah($naskah_id)
+    {
+        return $this->db->get_where('naskah_files', ['naskah_id' => $naskah_id])->result_array();
+    }
+
     // public function deleteNaskah($naskah_id)
     // {
     //     $this->db->where('id', $naskah_id);

@@ -225,6 +225,7 @@ class User extends CI_Controller
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->User_model->userLogged();
         $data['naskahdetail'] = $this->User_model->getNaskahDetail($naskah_id);
+        $data['filenaskah'] = $this->User_model->getListFileNaskah($naskah_id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

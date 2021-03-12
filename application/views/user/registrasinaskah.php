@@ -249,7 +249,7 @@
                                 </div>
                                 <div class="form-group row justify-content-end">
                                     <div class="col-sm-2">
-                                        <button class="btn btn-secondary btn-block">Cancel</button>
+                                        <a href="javascript:history.back()" class="btn btn-secondary btn-block">Batal</a>
                                     </div>
                                     <div class="col-sm-2">
                                         <button type="submit" class="btn btn-primary btn-block">Lanjut</button>

@@ -96,7 +96,49 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="<?= base_url(''); ?>" class="btn btn-primary mb-3">Naskah Digital</a>
+                                    <!-- Button trigger modal -->
+                                    <div class="form-group row justify-content-end">
+                                        <div class="col-sm-2">
+                                            <a href="javascript:history.back()" class="btn btn-secondary btn-block">Kembali</a>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#NaskahDigitalModal">Naskah Digital</button>
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="NaskahDigitalModal" tabindex="-1" aria-labelledby="NaskahDigitalModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="NaskahDigitalModalLabel">Naskah Digital</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-sm table-borderless" width="100%" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row" class="pr-3">Pembuat</th>
+                                                        <td class="pl-3"><?= $naskahdetail['instansi_pengirim']; ?>, <?= $naskahdetail['nama_pengirim']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" class="pr-3">Tanggal Upload</th>
+                                                        <td class="pl-3"><?= date('d-m-Y', $naskahdetail['tgl_regis']); ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" class="pr-3">Naskah</th>
+                                                        <td class="pl-3"><?= date('d-m-Y', $naskahdetail['tgl_regis']); ?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

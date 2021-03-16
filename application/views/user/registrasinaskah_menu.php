@@ -12,8 +12,8 @@
                                     Pilih Registrasi Naskah ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href=<?= base_url('user/registrasinaskah/internal'); ?>>Registrasi Naskah Masuk</a>
-                                    <a class="dropdown-item" href=<?= base_url('user/registrasinaskah/external'); ?>>Registrasi Naskah Keluar</a>
+                                    <a class="dropdown-item" href=<?= base_url('user/registrasinaskah/external'); ?>>Registrasi Naskah Masuk</a>
+                                    <a class="dropdown-item" href=<?= base_url('user/registrasinaskah/internal'); ?>>Registrasi Naskah Keluar</a>
                                 </div>
                             </div>
                         </div>

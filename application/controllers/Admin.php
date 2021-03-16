@@ -11,19 +11,6 @@ class Admin extends CI_Controller
         $this->load->model('Sidebar_model');
         $this->load->model('Admin_model');
     }
-
-    public function index()
-    {
-        $data['title'] = 'Dashboard';
-        $data['menu'] = $this->Sidebar_model->getRoleMenu();
-        $data['submenu'] = $this->Sidebar_model->getSideMenu();
-        $data['user'] = $this->Admin_model->userLogged();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/index', $data);
-        $this->load->view('templates/footer');
-    }
     
     public function role()
     {

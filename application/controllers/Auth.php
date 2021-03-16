@@ -45,12 +45,10 @@ class Auth extends CI_Controller
 		} else {
             if ($loginstatus == 1) {
                 $roleuser = $this->Auth_model->cek_role();
-                if ($roleuser == 1) {
-                    redirect('admin');
-                } else if($roleuser == 4){
+                if($roleuser == 4){
                     redirect('inactiveuser');
                 } else {
-                    redirect('profil');
+                    redirect('user');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');

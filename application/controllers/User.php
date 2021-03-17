@@ -11,19 +11,6 @@ class User extends CI_Controller
         $this->load->model('User_model');
     }
 
-    public function index()
-    {
-        $data['title'] = 'Halaman Utama';
-        $data['menu'] = $this->Sidebar_model->getRoleMenu();
-        $data['submenu'] = $this->Sidebar_model->getSideMenu();
-        $data['user'] = $this->User_model->userLogged();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/index', $data);
-        $this->load->view('templates/footer');
-    }
-
     public function registrasiNaskahMenu()
     {
         $data['title'] = 'Registrasi Naskah';

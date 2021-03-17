@@ -48,7 +48,7 @@ class Auth extends CI_Controller
                 if($roleuser == 4){
                     redirect('inactiveuser');
                 } else {
-                    redirect('user');
+                    redirect('profil');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');

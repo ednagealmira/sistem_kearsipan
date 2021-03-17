@@ -2,7 +2,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+                    <h1 class="h3 mb-4 text-gray-800"><?= $title . $user['nama']; ?></h1>
                     
                     <div class="row">
                         <div class="col-lg-7">
@@ -17,8 +17,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $user['nama']; ?>, <?= $user['jabatan']; ?></h5>
-                                    <p class="card-text"><?= $user['username']; ?></p>
+                                    <h5 class="card-title"><?= $user['username']; ?></h5>
+                                    <p class="card-text"><?= $user['jabatan']; ?></p>
                                     <p class="card-text"><small class="text-muted">Bergabung pada <?= date('d F Y', $user['date_created']); ?></small></p>
                                 </div>
                             </div>

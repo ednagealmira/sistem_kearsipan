@@ -227,8 +227,12 @@ class User extends CI_Controller
 
     public function naskahdelete($naskah_id)
     {
-        $this->User_model->deleteNaskah($naskah_id);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
+        $status_delete = $this->User_model->deleteNaskah($naskah_id);
+        if ($status_delete == 0) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Naskah berhasil dihapus.</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Naskah gagal dihapus.</div>');
+        }
         redirect('user/lognaskah');
     }
 

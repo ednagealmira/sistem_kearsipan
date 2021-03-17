@@ -112,11 +112,24 @@ class User_model extends CI_Model
 
     public function deleteNaskah($naskah_id)
     {
-        $this->db->where('id', $naskah_id);
-        $this->db->delete('naskah');
-
-        $this->db->where('naskah_id', $naskah_id);
-        $this->db->delete('naskah_files');
+        $status = 0;
+        $temp = $this->db->get_where('naskah_files', array('naskah_id'=> $naskah_id))->result_array();
+        for ($i=0; $i < count($temp); $i++) {
+            $file_path = './assets/filesUploaded/naskahdoc/' . $temp[$i]['file_name'];
+            if (!unlink($file_path)) {
+                $status += 1;
+            }
+            else {
+                $this->db->where('naskah_id', $naskah_id);
+                $this->db->delete('naskah_files');
+                $status = 0;
+            }
+        }
+        if ($status == 0) {
+            $this->db->where('id', $naskah_id);
+            $this->db->delete('naskah');    
+        }
+        return $status;
     }
 
 }

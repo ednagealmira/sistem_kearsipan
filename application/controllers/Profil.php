@@ -93,7 +93,7 @@ class Profil extends CI_Controller
                     $new_pw = password_hash($new_password, PASSWORD_DEFAULT);
                     $this->Profil_model->updatepassword($new_pw);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diubah!</div>');
-                    redirect('profil/changepassword');
+                    redirect('profil');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');

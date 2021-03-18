@@ -52,6 +52,8 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Registrasi Naskah';
+            if ($status_registrasi == 'external') $data['status_naskah'] = 'Masuk';
+            else if ($status_registrasi == 'internal') $data['status_naskah'] = 'Keluar';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
             $data['user'] = $this->User_model->userLogged();

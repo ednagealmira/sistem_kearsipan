@@ -18,16 +18,30 @@
             <div class="sidebar-heading mt-3">
                 <?= $m['menu']; ?>
             </div>
-                <?php $menu_id = $m['id']; ?>
-                <?php for ($i=0; $i < count($submenu[$menu_id]); $i++) : ?>
-                    <?php if($title == $submenu[$menu_id][$i]['title']) : ?>
-                    <li class="nav-item active">
+                <?php $menu_id = $m['id'];
+                for ($i=0; $i < count($submenu[$menu_id]); $i++) :
+                if($title == $submenu[$menu_id][$i]['title']) : ?>
+                <li class="nav-item active">
+                <?php else : ?>
+                <li class="nav-item">
+                <?php endif;
+                    if($submenu[$menu_id][$i]['title'] == 'Registrasi Naskah') : ?>
+                    <a class="nav-link pb-0" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="<?= $submenu[$menu_id][$i]['icon']; ?>"></i>
+                        <span><?= $submenu[$menu_id][$i]['title']; ?></span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white collapse-inner rounded mb-0 mt-2">
+                            <a class="collapse-item" href="<?= base_url('user/registrasinaskah/external'); ?>">Registrasi Naskah Masuk</a>
+                            <a class="collapse-item" href="<?= base_url('user/registrasinaskah/internal'); ?>">Registrasi Naskah Keluar</a>
+                        </div>
+                    </div>
                     <?php else : ?>
-                    <li class="nav-item">
-                    <?php endif; ?>
                     <a class="nav-link pb-0" href=<?= base_url($submenu[$menu_id][$i]['url']); ?>>
                         <i class="<?= $submenu[$menu_id][$i]['icon']; ?>"></i>
-                        <span><?= $submenu[$menu_id][$i]['title']; ?></span></a>
+                        <span><?= $submenu[$menu_id][$i]['title']; ?></span>
+                    </a>
+                    <?php endif; ?>
                 </li>
                 <?php endfor; ?>
                 <!-- Divider -->

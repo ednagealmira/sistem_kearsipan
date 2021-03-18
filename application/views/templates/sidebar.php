@@ -26,14 +26,26 @@
                 <li class="nav-item">
                 <?php endif;
                     if($submenu[$menu_id][$i]['title'] == 'Registrasi Naskah') : ?>
-                    <a class="nav-link pb-0" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link pb-0" href="#" data-toggle="collapse" data-target="#collapseRegis" aria-expanded="true" aria-controls="collapseRegis">
                         <i class="<?= $submenu[$menu_id][$i]['icon']; ?>"></i>
                         <span><?= $submenu[$menu_id][$i]['title']; ?></span>
                     </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div id="collapseRegis" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white collapse-inner rounded mb-0 mt-2">
                             <a class="collapse-item" href="<?= base_url('user/registrasinaskah/external'); ?>">Registrasi Naskah Masuk</a>
                             <a class="collapse-item" href="<?= base_url('user/registrasinaskah/internal'); ?>">Registrasi Naskah Keluar</a>
+                        </div>
+                    </div>
+                    <?php elseif($submenu[$menu_id][$i]['title'] == 'Pengaturan Umum') : ?>
+                    <a class="nav-link pb-0" href="#" data-toggle="collapse" data-target="#collapsePengaturan" aria-expanded="true" aria-controls="collapsePengaturan">
+                        <i class="<?= $submenu[$menu_id][$i]['icon']; ?>"></i>
+                        <span><?= $submenu[$menu_id][$i]['title']; ?></span>
+                    </a>
+                    <div id="collapsePengaturan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <?php for($i = 0; $i < count($menu_pengaturan); $i++) : ?>
+                            <a class="collapse-item" href="<?= base_url($menu_pengaturan[$i]['url']); ?>"><?= $menu_pengaturan[$i]['menu']; ?></a>
+                            <?php endfor; ?>
                         </div>
                     </div>
                     <?php else : ?>

@@ -28,4 +28,9 @@ class Sidebar_model extends CI_Model
         }
         return $submenu;
     }
+
+    public function getMenuPengaturan()
+    {
+        return $this->db->get('pengaturan_naskah')->result_array();
+    }
 }

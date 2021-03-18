@@ -13,7 +13,8 @@
             <hr class="sidebar-divider mb-0">
 
             <!-- looping menu -->
-            <?php foreach ($menu as $m) : ?>
+            <?php foreach ($menu as $m) : 
+            if($m['menu'] != 'Profil') : ?>
             <div class="sidebar-heading mt-3">
                 <?= $m['menu']; ?>
             </div>
@@ -29,11 +30,9 @@
                         <span><?= $submenu[$menu_id][$i]['title']; ?></span></a>
                 </li>
                 <?php endfor; ?>
-
                 <!-- Divider -->
                 <hr class="sidebar-divider mt-3 mb-0">
-
-            <?php endforeach; ?>
+            <?php endif; endforeach; ?>
             
             <!-- Nav Item -->
             <li class="nav-item">

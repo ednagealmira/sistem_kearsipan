@@ -13,7 +13,7 @@ class Profil extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Selamat Datang, ';
+        $data['title'] = 'Profil Saya';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['user'] = $this->Profil_model->userLogged();

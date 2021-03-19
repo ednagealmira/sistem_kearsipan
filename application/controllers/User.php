@@ -16,8 +16,8 @@ class User extends CI_Controller
         $data['title'] = 'Registrasi Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
-        $data['user'] = $this->User_model->userLogged();
-        
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
+        $data['user'] = $this->User_model->userLogged();        
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -56,6 +56,7 @@ class User extends CI_Controller
             else if ($status_registrasi == 'internal') $data['status_naskah'] = 'Keluar';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->User_model->userLogged();
     
             $data['jnaskah'] = $this->User_model->getJNaskah();
@@ -120,6 +121,7 @@ class User extends CI_Controller
         $data['title'] = 'Sisipkan File Digital';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->User_model->userLogged();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -182,6 +184,7 @@ class User extends CI_Controller
         $data['title'] = 'Download Template';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->User_model->userLogged();
         $data['templates'] = $this->User_model->getListTemplate();
         $this->load->view('templates/header', $data);
@@ -204,6 +207,7 @@ class User extends CI_Controller
         $data['title'] = 'Log Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->User_model->userLogged();
         $data['listnaskah'] = $this->User_model->getListNaskah();
 
@@ -230,6 +234,7 @@ class User extends CI_Controller
         $data['title'] = 'Detail Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->User_model->userLogged();
         $data['naskahdetail'] = $this->User_model->getNaskahDetail($naskah_id);
         $data['filenaskah'] = $this->User_model->getListFileNaskah($naskah_id);

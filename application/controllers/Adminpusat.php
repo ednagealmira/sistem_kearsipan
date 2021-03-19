@@ -18,6 +18,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Umum';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['menupengaturan'] = $this->Adminpusat_model->getListPengaturan();
         $this->load->view('templates/header', $data);
@@ -34,6 +35,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Bahasa';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['bahasa'] = $this->Adminpusat_model->getListBahasa();
         $this->load->view('templates/header', $data);
@@ -52,6 +54,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Tambah Pengaturan Bahasa';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -78,6 +81,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Pengaturan Bahasa';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['bahasa_edit'] = $this->Adminpusat_model->getBahasaById($bahasa_id);
             $this->load->view('templates/header', $data);
@@ -108,6 +112,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Jenis Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['jenis'] = $this->Adminpusat_model->getListJenis();
         $this->load->view('templates/header', $data);
@@ -481,6 +486,7 @@ class Adminpusat extends CI_Controller
         $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['templates'] = $this->Adminpusat_model->getListTemplate();
         $this->load->view('templates/header', $data);
@@ -499,6 +505,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Upload Template Dokumen';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -561,6 +568,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Template Dokumen';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['template_edit'] = $this->Adminpusat_model->getTemplateById($template_id);
             $this->load->view('templates/header', $data);

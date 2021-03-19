@@ -75,6 +75,14 @@ class Admin extends CI_Controller
 
     public function useredit($user_id)
     {
+        $data['title'] = 'Edit Pengguna';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
+        $data['user'] = $this->Admin_model->userLogged();
+        $data['user_edit'] = $this->Admin_model->getUserById($user_id);
+        $data['roles'] = $this->Admin_model->getListRole();
+
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Nama harus diisi.'
         ]);
@@ -83,14 +91,6 @@ class Admin extends CI_Controller
         ]);
         
         if($this->form_validation->run() == false) {
-            $data['title'] = 'Edit Pengguna';
-            $data['menu'] = $this->Sidebar_model->getRoleMenu();
-            $data['submenu'] = $this->Sidebar_model->getSideMenu();
-            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
-            $data['user'] = $this->Admin_model->userLogged();
-            $data['user_edit'] = $this->Admin_model->getUserById($user_id);
-            $data['roles'] = $this->Admin_model->getListRole();
-            
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
@@ -117,6 +117,13 @@ class Admin extends CI_Controller
 
     public function useradd()
     {
+        $data['title'] = 'Tambah Pengguna';
+        $data['menu'] = $this->Sidebar_model->getRoleMenu();
+        $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
+        $data['user'] = $this->Admin_model->userLogged();
+        $data['roles'] = $this->Admin_model->getListRole();
+        
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
             'required' => 'Nama harus diisi.'
         ]);
@@ -141,12 +148,6 @@ class Admin extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Tambah Pengguna';
-            $data['menu'] = $this->Sidebar_model->getRoleMenu();
-            $data['submenu'] = $this->Sidebar_model->getSideMenu();
-            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
-            $data['user'] = $this->Admin_model->userLogged();
-            $data['roles'] = $this->Admin_model->getListRole();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);

@@ -16,6 +16,7 @@ class Profil extends CI_Controller
         $data['title'] = 'Profil Saya';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Profil_model->userLogged();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -29,6 +30,7 @@ class Profil extends CI_Controller
         $data['title'] = 'Edit Profil';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Profil_model->userLogged();
 
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim', [
@@ -60,6 +62,7 @@ class Profil extends CI_Controller
         $data['title'] = 'Ubah Password';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Profil_model->userLogged();
 
         $this->form_validation->set_rules('current_password', 'Password Saat Ini', 'required|trim', [

@@ -42,9 +42,9 @@
                         <span><?= $submenu[$menu_id][$i]['title']; ?></span>
                     </a>
                     <div id="collapsePengaturan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <?php for($i = 0; $i < count($menu_pengaturan); $i++) : ?>
-                            <a class="collapse-item" href="<?= base_url($menu_pengaturan[$i]['url']); ?>"><?= $menu_pengaturan[$i]['menu']; ?></a>
+                        <div class="bg-white collapse-inner rounded">
+                            <?php for($j = 0; $j < count($menu_pengaturan); $j++) : ?>
+                            <a class="collapse-item" href="<?= base_url($menu_pengaturan[$j]['url']); ?>"><?= $menu_pengaturan[$j]['menu']; ?></a>
                             <?php endfor; ?>
                         </div>
                     </div>

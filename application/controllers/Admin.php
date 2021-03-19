@@ -17,6 +17,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Role';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Admin_model->userLogged();
         $data['role'] = $this->Admin_model->getListRole();
         $this->load->view('templates/header', $data);
@@ -31,6 +33,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Role Access';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Admin_model->userLogged();
         $data['role'] = $this->Admin_model->getRoleById($role_id);
         $data['listmenu'] = $this->Admin_model->getListMenu();
@@ -58,6 +61,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Pengaturan Pengguna';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Admin_model->userLogged();
         $data['users'] = $this->Admin_model->getListUser();
         $data['roles'] = $this->Admin_model->getListRole();
@@ -82,6 +86,7 @@ class Admin extends CI_Controller
             $data['title'] = 'Edit Pengguna';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Admin_model->userLogged();
             $data['user_edit'] = $this->Admin_model->getUserById($user_id);
             $data['roles'] = $this->Admin_model->getListRole();
@@ -139,6 +144,7 @@ class Admin extends CI_Controller
             $data['title'] = 'Tambah Pengguna';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Admin_model->userLogged();
             $data['roles'] = $this->Admin_model->getListRole();
             $this->load->view('templates/header', $data);

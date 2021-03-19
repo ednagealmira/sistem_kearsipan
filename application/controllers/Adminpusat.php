@@ -478,9 +478,9 @@ class Adminpusat extends CI_Controller
     public function templatedoc()
     {
         $data['title'] = 'Template Dokumen';
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
-        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['templates'] = $this->Adminpusat_model->getListTemplate();
         $this->load->view('templates/header', $data);

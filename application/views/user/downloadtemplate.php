@@ -16,7 +16,7 @@
                                             <th>#</th>
                                             <th>Keterangan</th>
                                             <th>Tanggal Upload</th>
-                                            <th>Action</th>
+                                            <th>Download</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -136,10 +136,12 @@
                                                     <?php foreach ($filenaskah as $f) : ?>
                                                     <tr>
                                                         <td scope="row">
-                                                            <a href="<?= base_url('user/naskahdownload/') . $f['id']; ?>" class="btn btn-warning btn-circle btn-sm mr-2">
-                                                            <i class="fas fa-fw fa-file-download"></i>
+                                                            <a href="<?= base_url('user/naskahdownload/') . $f['id']; ?>">
+                                                                <div class="btn btn-warning btn-circle btn-sm mr-2">
+                                                                    <i class="fas fa-fw fa-file-download"></i>
+                                                                </div>
+                                                                <?= $f['file_name']; ?>
                                                             </a>
-                                                            <?= $f['file_name']; ?>
                                                         </td>
                                                     </tr>
                                                     <?php endforeach; ?>

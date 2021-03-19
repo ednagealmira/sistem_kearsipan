@@ -11,23 +11,6 @@ class Adminpusat extends CI_Controller
         $this->load->model('Adminpusat_model');
     }
 
-    // -------------------------- Pengaturan Umum --------------------------
-
-    public function index()
-    {
-        $data['title'] = 'Pengaturan Umum';
-        $data['menu'] = $this->Sidebar_model->getRoleMenu();
-        $data['submenu'] = $this->Sidebar_model->getSideMenu();
-        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
-        $data['user'] = $this->Adminpusat_model->userLogged();
-        $data['menupengaturan'] = $this->Adminpusat_model->getListPengaturan();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('adminpusat/index', $data);
-        $this->load->view('templates/footer');
-    }
-
     // -------------------------- Pengaturan Bahasa --------------------------
 
     public function naskahbahasa()
@@ -131,6 +114,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Tambah Pengaturan Jenis Naskah';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -157,6 +141,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Pengaturan Jenis Naskah';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['jenis_edit'] = $this->Adminpusat_model->getJenisById($jenis_id);
             $this->load->view('templates/header', $data);
@@ -187,6 +172,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Media Arsip';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['media'] = $this->Adminpusat_model->getListMedia();
         $this->load->view('templates/header', $data);
@@ -205,6 +191,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Tambah Pengaturan Media Arsip';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -232,6 +219,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Pengaturan Media Arsip';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['media_edit'] = $this->Adminpusat_model->getMediaById($media_id);
             $this->load->view('templates/header', $data);
@@ -263,6 +251,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Sifat Naskah';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['sifat'] = $this->Adminpusat_model->getListSifat();
         $this->load->view('templates/header', $data);
@@ -281,6 +270,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Tambah Pengaturan Sifat Naskah';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -315,6 +305,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Pengaturan Sifat Naskah';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['sifat_edit'] = $this->Adminpusat_model->getSifatById($sifat_id);
             $this->load->view('templates/header', $data);
@@ -338,6 +329,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Tingkat Perkembangan';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['tperkembangan'] = $this->Adminpusat_model->getListTP();
         $this->load->view('templates/header', $data);
@@ -356,6 +348,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Tambah Pengaturan Tingkat Perkembangan';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -382,6 +375,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Pengaturan Tingkat Perkembangan';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['tp_edit'] = $this->Adminpusat_model->getTPById($tp_id);
             $this->load->view('templates/header', $data);
@@ -412,6 +406,7 @@ class Adminpusat extends CI_Controller
         $data['title'] = 'Pengaturan Tingkat Urgensi';
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
+        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['user'] = $this->Adminpusat_model->userLogged();
         $data['urgensi'] = $this->Adminpusat_model->getListUrgensi();
         $this->load->view('templates/header', $data);
@@ -430,6 +425,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Tambah Pengaturan Tingkat Urgensi';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -463,6 +459,7 @@ class Adminpusat extends CI_Controller
             $data['title'] = 'Edit Pengaturan Tingkat Urgensi';
             $data['menu'] = $this->Sidebar_model->getRoleMenu();
             $data['submenu'] = $this->Sidebar_model->getSideMenu();
+            $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
             $data['user'] = $this->Adminpusat_model->userLogged();
             $data['urgensi_edit'] = $this->Adminpusat_model->getUrgensiById($urgensi_id);
             $this->load->view('templates/header', $data);
@@ -483,7 +480,6 @@ class Adminpusat extends CI_Controller
     public function templatedoc()
     {
         $data['title'] = 'Template Dokumen';
-        $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();
         $data['menu'] = $this->Sidebar_model->getRoleMenu();
         $data['submenu'] = $this->Sidebar_model->getSideMenu();
         $data['menu_pengaturan'] = $this->Sidebar_model->getMenuPengaturan();

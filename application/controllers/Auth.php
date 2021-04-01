@@ -88,11 +88,11 @@ class Auth extends CI_Controller
             $data = [
                 //ditambahkan true untuk menghindari XSS (cross-side scripting)
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'jabatan' => 'Belum ditentukan',
+                'jabatan' => 'Jabatan Belum ditentukan',
                 'username' => htmlspecialchars($this->input->post('username', true)),
                 //password_hash adalah function bawaan php, untuk enkripsi password
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'role_id' => 3, //inactive member
+                'role_id' => 4, //inactive member
                 'date_created' => time()
             ];
             

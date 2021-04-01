@@ -20,8 +20,10 @@ class Admin_model extends CI_Model
 
     public function getListMenu()
     {
-        //tidak memunculkan pilihan role admin
+        //tidak memunculkan pilihan admin
         $this->db->where('id !=', 1);
+        //tidak memunculkan pilihan profil
+        $this->db->where('id !=', 6);
         return $this->db->get_where('user_menu')->result_array();
     }
 

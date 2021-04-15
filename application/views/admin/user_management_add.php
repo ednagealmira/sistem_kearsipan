@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group row justify-content-end">
                                     <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-primary btn-block">Simpan Perubahan</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Tambah Pengguna</button>
                                     </div>
                                 </div>
                             </form>
